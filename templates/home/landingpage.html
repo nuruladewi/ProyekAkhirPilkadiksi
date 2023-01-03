@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- SEO Meta description -->
+    <meta name="description" content="E-Vote Pilkadiksi PNJ">
+    <meta name="author" content="Formadiksi KIP-K PNJ">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+    <!-- MyFonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
+    <!-- My CSS -->
+    <link rel="stylesheet" href=" {{url_for('static', filename='/css/style.css')}} ">
+    <link rel="stylesheet" href=" {{url_for('static', filename='/css/second.css')}} ">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href=" {{url_for('static', filename='plugins/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  
+
+    <!-- Title -->
+    <title>E-vote Pilkadiksi PNJ</title>
+    <!-- Favicon Icon -->
+    <link rel="icon" href="{{url_for('static', filename='img/LOGO PILKADIKSI_2022-removebg-preview.png')}}" type="image/png" sizes="16x16">
+    <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7COpen+Sans:400,600&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+          <a class="navbar-brand" href="#">Pilkadiksi PNJ</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+              <a class="nav-link active fw-bolder" aria-current="page" href="{{ url_for('home')}}">Home</a>
+              <a class="nav-link" href="#">Kandidat</a>
+              <a class="nav-link buttong fw-bolder btn shadow-sm rounded" href=" {{ url_for('login')}} ">Login</a>
+              <!-- <a class="nav-link disabled">Disabled</a> -->
+            </div>
+          </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <div class="row display-4">
+          <div class="col text-center">
+            <img src="{{ url_for('static', filename='img/LOGO PILKADIKSI_2022-removebg-preview.png')}}" alt="Logo Pilkadiksi" width="100px" class="img-fluid mx-auto d-block ">
+              <h1 class="title-text display-5"> E-Vote Pilkadiksi PNJ</h1>
+              <p class="lead text-umum">Pilihan Ketua Bidikmisi KIP-K PNJ berbasis elektronik.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Akhir Jumbotron -->
+
+    <!--CONTENTS-->
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Info Panel -->
+        <div class="row justify-align-center">
+          <div class="col-lg-12 info-panel">
+          </div>  
+        </div>
+  
+    </div>
+    <!-- Akhir Container -->
+
+    <!-- Container Penjabaran -->
+    <section class="work-process-new ptb-100 dark-bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2 class="text-title font-weight-normal"> PILKADIKSI PNJ <h2>
+                <p class="text-penjabaran"> Pilkadiksi merupakan salah satu program kerja dari Forum Mahasiswa Bidikmisi KIP-K Politeknik Negeri Jakarta yang bertujuan untuk meregenerasi Formadiksi PNJ menjadi lebih baik dengan terpilihnya pemimpin baru.</p>
+                <div class="d-flex justify-content-center mr-4">
+                    <button type="button" class="btn buttong btn-lg mt-3">Lihat Kandidat</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Akhir Container -->
+    <!-- Container Tata Cara -->
+    <section class="work-process-new ptb-100 dark-bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-9 col-lg-8">
+                    <div class="section-heading text-center mb-5">
+                        <h2 class="putih">Tata Cara E-Vote</h2>
+                        <p class="lead putih">Berikut Ini Tata Cara Melakukan E-Vote: </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="work-process-wrap text-center">
+                        <div class="single-work-process">
+                            <div class="work-process-icon-wrap oren-bg rounded-circle">
+                                <i class="fas fa-duotone fa-envelope fa-4x icon-md text-white"></i>
+                                <span class="process-step primary-bg text-white shadow-sm">1</span>
+                            </div>
+                            <div class="work-process-content mt-4">
+                                <h5 class="putih">Cek Akun</h5>
+                                <ul class=" tech-feature-list text-left">
+                                    <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Buka</strong> Inboxmail mhsw.pnj.ac.id.
+                                    </li>
+                                    <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Cari</strong> E-mail Dari Admin Pilkadiksi.
+                                    </li>
+                                    <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Buka</strong> E-mail Tersebut.</li>
+                                    <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Catat</strong> Informasi Akun Tertera.</li>
+                                    <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span>Jika<strong> Tidak Ada, </strong> Cek Kotak Spam.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single-work-process">
+                            <div class="work-process-icon-wrap oren-bg rounded-circle">
+                                <i class="fas fa fa-sign-in fa-4x icon-md text-white"></i>
+                                <span class="process-step primary-bg text-white shadow-sm">2</span>
+                            </div>
+                            <div class="work-process-content mt-4">
+                                <h5 class="putih">Login</h5>
+                                <ul class="list-unstyled tech-feature-list text-left">
+                                    <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Klik</strong> Tombol Login.
+                                    </li>
+                                    <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Masukan</strong> NIM anda.
+                                    </li>
+                                    <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Masukan </strong> password sebelumnya.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single-work-process">
+                            <div class="work-process-icon-wrap oren-bg rounded-circle">
+                                <i class="fas fa fa-inbox fa-4x icon-md text-white"></i>
+                                <span class="process-step primary-bg text-white shadow-sm">3</span>
+                            </div>
+                            <div class="work-process-content mt-4">
+                                <h5 class="putih" >Memilih Kandidat</h5>
+                                <ul class="list-unstyled tech-feature-list text-left">
+                                  <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Siapkan</strong> pilihan anda. </li>
+                                  <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Baca</strong> Visi Misi Kandidat. </li>
+                                  <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Cari</strong> tombol Vote Sekarang.</li>
+                                  <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Masukkan</strong> NIM anda.</li>
+                                  <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Masukkan</strong> pilihan kandidat anda.</li>
+                                  <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Klik</strong> Vote.</li>                                  
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single-work-process">
+                            <div class="work-process-icon-wrap oren-bg rounded-circle">
+                                <i class="fas fa fa-check-circle fa-4x ti-cup icon-md text-white"></i>
+                                <span class="process-step primary-bg text-white shadow-sm">4</span>
+                            </div>
+                            <div class="work-process-content mt-4">
+                                <h5 class="putih">Logout</h5>
+                                <ul class="list-unstyled tech-feature-list text-left">
+                                    <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Setelah selesai</strong> memilih.</li>
+                                    <li class="py-1 putihgandum"><span class="ti-check-box mr-2 putih"></span><strong>Klik</strong> Logout untuk mengakhiri sesi.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>  
+    <!-- Akhir Container -->
+
+
+    <!--feature section start-->
+<!--    <section class="feature-content-two ptb-100 dark-bg">
+      <div class="container">
+          <div class="row justify-content-center">
+              INI UNTUK ISI CAROUSEL FOTO
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+                <div class="section-heading text-center mb-4">
+                    <h2>Carousel kegiatan Pilkadiksi</h2>
+                </div>
+            </div>
+          </div>
+      </div>
+    </section>
+    </div> -->
+    <!--body content wrap end-->
+
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4 bg-oren">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left mb-4">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+  
+          <!-- Content -->
+          <h5 class="navbar-brand" href="#">Pilkadiksi</h5>
+          <p class="nav-link-kuning">Pilihan Ketua Bidikmisi KIP-K PNJ</p>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none pb-3">
+  
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+          <!-- Links -->
+          <h4 class="nav-link-putih text-uppercase">Quick Links</h4>
+          <ul class="nav flex-column dongker">
+              <li class="nav-item dongker">
+                  <a class="nav-link-kuning active dongker" href="{{ url_for('home')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link-kuning" href="#">Kandidat</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link-kuning" href="#">Login</a>
+              </li>
+          </ul>  
+        </div>
+        <!-- Grid column -->
+  
+        <!-- Grid column -->
+        <div class="col-md-3 mb-md-0 mb-3">
+  
+          <!-- Links -->
+          <h5 class="nav-link-putih text-uppercase">Contacts</h5>
+  
+          <ul class="nav-link-kuning list-unstyled">
+            <li>
+              <a class="nav-link-kuning" href="https://instagram.com/pilkadiksipnj/">@pilkadiksipnj</a>
+            </li>
+            <li>
+              <a class="nav-link-kuning" href="#!">pilkadiksipnj@formadiksipnj.com</a>
+            </li>
+            <li>
+              <a class="nav-link-kuning" href="https://wa.me/62895372461140">(+62)8953872461140 [Admin]</a>
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Footer Links -->
+
+     <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2022 Copyright:
+        <a href="/"> Pilkadiksipnj.com</a>
+    </div>
+    <!-- Copyright -->
+
+    <!--footer section end-->
+
+    <!-- Akhir footer -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    -->
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+  </body>
+</html>

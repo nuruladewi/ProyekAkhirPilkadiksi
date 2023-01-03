@@ -1,0 +1,263 @@
+
+/* Navbar */
+
+.navbar {
+    position: relative !important;
+    z-index: 1  !important;
+    background-color: #1e032b !important;
+}
+
+.navbar-toggler {
+    background-color: #d97856 !important;
+}
+
+.navbar-brand {
+    color: white  !important;
+    text-shadow: 2.5px 1px 2px #d97856 !important;
+    text-transform: uppercase !important;
+    font-family: 'Contrail One', cursive !important;
+    /* font-family: 'Open Sans', sans-serif !important; */
+    font-size: 32px !important;
+}
+
+.nav-link {
+    color: white  !important;
+    font-family: 'Ruda', sans-serif !important;
+    font-weight: lighter  !important;
+}
+
+.nav-link-putih {
+    color: white  !important;
+    font-family: 'Ruda', sans-serif !important;
+    font-weight: lighter  !important;
+}
+
+
+.nav-link-kuning {
+    color: #fdbd69  !important;
+    font-family: 'Ruda', sans-serif !important;
+    font-weight: lighter  !important;
+}
+
+.buttong {
+    color: white !important;
+    --bs-btn-bg: #d97856 !important;
+    background-color: #d97856;
+    font-weight: bolder !important;
+}
+
+
+.buttong:hover {
+    color: #1e032b !important;
+    --bs-btn-bg: #fdbd69 !important;
+    background-color: #fdbd69 !important;
+}
+
+.buttongdark {
+    color: white !important;
+    --bs-btn-bg: #1e032b !important;
+    font-weight: bolder !important;
+    position: relative;
+}
+
+.buttonglight {
+    color: #1e032b !important;
+    --bs-btn-bg: #1e032b !important;
+    background-color: #d97856 !important;
+    font-weight: bolder !important;
+    position: relative;
+}
+
+.buttongdelete {
+    color: #1e032b !important;
+    --bs-btn-bg: #1e032b !important;
+    background-color: #fdbd69 !important;
+    font-weight: bolder !important;
+    position: relative;
+}
+
+.buttonglight:hover .buttongdelete:hover {
+    color: #fdbd69 !important;
+    --bs-btn-bg: #1e032b !important;
+    background-color: #1e032b !important;
+}
+
+
+/* WARNA_WARNI */
+.kuning {
+    color: #fdbd69;
+}
+
+.bg-kuning {
+    background: #fdbd69;
+}
+
+.oren {
+    color: #d97856;
+}
+
+.bg-oren{
+    background-image: linear-gradient(to top, rgba(0,0,0), rgba(30,3,43)) !important;
+}
+
+.dongker {
+    color: #1e032b;
+}
+
+.bg-dongker{
+    background-color: #1e032b !important;
+}
+
+/* Jumbotron */
+.jumbotron {
+    background-image: url('/static/img/Tidakberjudul_fix.jpg') !important;
+    background-position: center !important;
+    background-size: cover  !important;
+    position: relative !important;
+    box-shadow: #1e032b;
+    margin-bottom: -0.01px;
+}
+
+.display-5 {
+    margin-top: 370px !important;
+}
+
+.info-panel {
+    margin-top: -30px;
+    background-color: #fdbd69;
+    padding: 0.01px;
+    position: relative;
+    width: auto;
+    
+}
+
+.info-panel img {
+    margin-bottom: 10px  !important;
+    background-image: -moz-linear-gradient(50px) !important;
+}
+
+
+.jumbotron .container {
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+.jumbotron::after {
+    content: '' !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-image: linear-gradient(to bottom, #1e032b 2%, rgba(0,0,0,0)) !important;
+    position: absolute !important;
+    bottom: 0 !important;
+}
+
+.floatingover {
+    content: '' !important;
+}
+
+.title-text {
+    color: white !important;
+    font-family: 'Verdana', sans-serif !important;
+    font-weight: bolder !important;
+    text-shadow: 3px 2px 1px #1e032b !important;
+    text-transform: uppercase;
+
+}
+
+
+.text-umum {
+    text-align: center;
+    font-family: 'Ruda Black', sans-serif !important;
+    font-weight: semibold !important;
+    color:white !important;
+    text-shadow: 2px 2px 2px #1e032b !important;
+}
+
+.text-penjabaran {
+    
+    color: white !important;
+    font-weight: 300;
+    font-size:large !important;
+    text-justify: auto !important;
+    text-align: center !important;
+    font-family: 'Ruda Black', sans-serif !important;
+}
+
+.text-title {
+    margin-right: 30px !important;
+    color: white !important;
+    font-weight: bolder;
+    text-justify: auto !important;
+    text-align: center !important;
+    font-family:'Verdana', sans-serif !important;
+}
+
+
+/* .logoforma {
+
+
+} */
+
+/* footer */
+.footer {
+    background-image: linear-gradient(to top, rgba(0,0,0), rgba(30,3,43)) !important;
+    /* background-image: linear-gradient(to top, rgba(217,120,86), rgba(30,3,43)) !important; */
+    position: relative !important;
+    text-align: justify !important;
+    background-size: cover  !important;
+}
+
+.footer p {
+    color: #fdbd69 !important;
+    font-size: 15px !important;
+    font-family: 'Contrail One', cursive !important;
+    text-align: center !important;
+}
+
+/* Desktop Ver. */
+@media (min-width: 992px) {
+    .navbar {
+        background-color:transparent  !important;
+    }
+    .nav-link {
+        font-family: 'Ruda Black', sans-serif !important;
+        margin-right: 12px !important;
+        font-weight: lighter !important;
+        color: white  !important;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.7) !important;
+    }
+
+    .buttong {
+        text-shadow: 1px 1px 1px #d97856 !important;
+    }
+
+
+    .nav-link:hover {
+        color: #1e032b !important;
+        background-color: #fdbd69 !important;
+        border-bottom: 3px solid #fdbd69 !important;
+        font-weight: bolder !important;
+        opacity: 125% !important;
+    }
+
+    .jumbotron {
+        margin-top: -75px !important;
+        height: 695.5px !important;
+    }
+
+
+    .jumbotron .display-5 {
+        margin-top: 5px  !important;
+    }
+    .text-penjabaran {
+        margin-right: 100px !important;
+        margin-left: 100px !important;
+    }
+
+    .footer p {
+        font-size: 20px !important;
+        margin-top: 20px  !important;
+        background-size: cover  !important;
+     }
+}

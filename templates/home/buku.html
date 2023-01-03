@@ -1,0 +1,135 @@
+{% extends 'layouts/baseadmin.html' %}
+
+{% block title %} Tables {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Daftar Buku</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href=" {{url_for('index')}} "><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">Buku</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="col-lg-6 col-5 text-right">
+            <a href=" {{url_for('logout')}} " class="btn btn-sm btn-neutral"> Logout </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header border-0">
+            <h3 class="mb-0">Daftar Buku Yang Telah Ditambahkan</h3>
+          </div>
+          <!-- Light table -->
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="sort" data-sort="id_buku">ID Buku</th>
+                  <th scope="col" class="sort" data-sort="kode_buku">Kode Buku</th>
+                  <th scope="col" class="sort" data-sort="judul_buku">Judul Buku</th>
+                  <th scope="col" class="sort" data-sort="penulis_buku">Penulis Buku</th>
+                  <th scope="col" class="sort" data-sort="penerbit_buku">Penerbit Buku</th>
+                  <th scope="col" class="sort" data-sort="tahun_penerbit">Tahun Terbit</th>
+                  <th scope="col" class="sort" data-sort="stok">Stok</th>
+                  <th scope="col" class="sort" data-sort="add"></th>
+                </tr>
+              </thead>
+              {%for item in databuku%}
+              <tbody class="list">
+                <tr>
+                    <th scope="row">
+                      {{item.id_buku}}
+                    </th>
+                    <td>
+                      {{item.kode_buku}}
+                    </td>
+                    <td>
+                      {{item.judul_buku}}
+                    </td>
+                    <td>
+                      {{item.penulis_buku}}
+                    </td>
+                    <td>
+                      {{item.penerbit_buku}}
+                    </td>
+                    <td>
+                      {{item.tahun_penerbit}}
+                    </td>
+                    <td>
+                      {{item.stok}}
+                    </td>
+                    <td>
+                      <a href="{{url_for('editedbuku', id_buku=item.id_buku)}}"> 
+                        <button class="btn btn-neutral"> Edit </button>
+                      </a>
+                      <a href="{{url_for('deletedbook', id_buku=item.id_buku)}} ">
+                        <button class="btn btn-danger"> Delete </button>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+                {%endfor%}
+                <tfoot>
+                  <tr>
+                    <th Scope="col"> Klik untuk menambahkan Data </th>
+                    <th></th>
+                    <th></th>
+                    <th Scope="col"> <a href="{{url_for('addbook')}}"> <button type="button" class="btn btn-neutral btn-block">
+                      Tambahkan data
+                    </button> </a>
+                    </th>
+                  </tr>
+                </tfoot>
+            </table>
+          </div>
+          <!-- Card footer -->
+          <div class="card-footer py-4">
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1">
+                    <i class="fas fa-angle-left"></i>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">
+                    <i class="fas fa-angle-right"></i>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include "includes/footer.html" %}
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,87 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Tables {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">Pengembalian Buku</h6>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                <li class="breadcrumb-item"><a href=" {{url_for('index')}} "><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">Pengembalian</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="col-lg-6 col-5 text-right">
+            <a href="{{url_for('logout')}}" class="btn btn-sm btn-neutral"> Logout </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header border-0">
+            <h3 class="mb-0">Daftar Buku Yang Sudah dan atau Harus Dikembalikan</h3>
+          </div>
+          <!-- Light table -->
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                    <th scope="col" class="sort" data-sort="id_pengembalian">ID Pengembalian</th>
+                    <th scope="col" class="sort" data-sort="tanggal_pengembalian">Waktu Pengembalian</th>
+                    <th scope="col" class="sort" data-sort="denda">Denda Pengembalian</th>
+                    <th scope="col" class="sort" data-sort="id_buku">ID Buku</th>
+                    <th scope="col" class="sort" data-sort="id_anggota">ID Anggota</th>
+                    <th scope="col" class="sort" data-sort="id_petugas">ID Petugas</th>
+                </tr>
+              </thead>
+              {%for item in datakembali %}
+              <tbody class="list">
+                <tr>
+                    <th scope="row">
+                        <a href = " {{item}} "> {{ item [0] }} </a>
+                    </th>
+                    <td>
+                        <a href = " {{item}} "> {{ item [1] }} </a>
+                    </td>
+                    <td>
+                        <a href = " {{item}} "> {{ item [2] }} </a>
+                    </td>
+                    <td>
+                        <a href = " {{item}} "> {{ item [3] }} </a>
+                    </td>
+                    <td>
+                        <a href = " {{item}} "> {{ item [4] }} </a>
+                    </td>
+                    <td>
+                        <a href = " {{item}} "> {{ item [5] }} </a>
+                    </td>
+                </tr>
+              </tbody>
+              {%endfor%}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include "includes/footer.html" %}
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

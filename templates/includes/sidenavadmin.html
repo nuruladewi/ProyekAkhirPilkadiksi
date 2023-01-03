@@ -1,0 +1,79 @@
+<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+  <div class="scrollbar-inner">
+    <!-- Brand -->
+    <div class="sidenav-header  align-items-center">
+      <a class="navbar-brand" href=" {{url_for('index')}} ">
+        <img src="https://perpustakaan.smkn1kotabekasi.sch.id/icon/smk1.png" class="navbar-brand-img" alt="Satoernoes Library">
+        <h3> SATOERNOES LIBRARY </h3>
+      </a>
+    </div>
+    <div class="navbar-inner">
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Nav items -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link {% if 'index' in segment %} active {% endif %}" href=" {{url_for('indexadmin')}} ">
+              <i class="ni ni-tv-2 text-primary"></i>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'daftarbuku' in segment %} active {% endif %}" href=" {{url_for('buku')}} ">
+              <i class="ni ni-books text-orange"></i>
+              <span class="nav-link-text">Daftar Buku</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'anggota' in segment %} active {% endif %}" href=" {{url_for('anggota')}} ">
+              <i class="ni ni-books text-orange"></i>
+              <span class="nav-link-text">Daftar Anggota</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'petugas' in segment %} active {% endif %}" href=" {{url_for('petugas')}} ">
+              <i class="ni ni-books text-orange"></i>
+              <span class="nav-link-text">Daftar Petugas</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'rak' in segment %} active {% endif %}" href=" {{url_for('rak')}} ">
+              <i class="ni ni-books text-orange"></i>
+              <span class="nav-link-text">Rak</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout') }}">
+              <i class="ni ni-user-run text-red"></i>
+              <span class="nav-link-text">Logout</span>
+            </a>
+          </li>
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Heading -->
+        <h6 class="navbar-heading p-0 text-muted">
+          <span class="docs-normal">Resources</span>
+        </h6>
+        <!-- Navigation -->
+        <ul class="navbar-nav mb-md-3">
+
+          <li class="nav-item">
+            <a class="nav-link {% if 'meminjam' in segment %} active {% endif %}" href=" {{url_for('peminjaman')}} ">
+              <i class="ni ni-book-bookmark text-primary"></i>
+              <span class="nav-link-text">Peminjaman Buku</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'mengembalikan' in segment %} active {% endif %}" href=" {{url_for('pengembalian')}} ">
+              <i class="ni ni-delivery-fast text-default"></i>
+              <span class="nav-link-text text-red">Pengembalian Buku</span>
+            </a>
+          </li>
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3">
+      </div>
+    </div>
+  </div>
+</nav>
