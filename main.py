@@ -22,30 +22,41 @@ def home():
 
 @application.route('/login/', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        if request.form['username'] != '181910203' and request.form['password'] != 'nurul@26':
-            flash('Invalid username/password','danger')
+    if request.method == 'GET':
+        return render_template('/home/login.html')
+    elif request.method == 'POST':
+        
+        NIM = request.form['NIM']
+        password = request.form['password']
+        if (NIM != '' and password !=''):
+            db = getMysqlConnection()
+            cur = db.cursor()
+            cur.execute ("SELECT * from `login` WHERE `NIM`='"+NIM+"'") 
+            data= cur.fetchone()
+            if data[1] == password: 
+                if data == None:
+                    notif = "NIM Salah"
+                    return render_template('/home/login.html')
+                elif data[1]==password:
+                    notif = "Halo " + NIM
+                    return render_template('/home/dumpAdmin.html',notif=notif)   
+            else:
+                cur.execute ("SELECT * from `admin` WHERE `NIM`='"+NIM+"'") 
+                data= cur.fetchone()
+                if data[1]==password:
+                    notif = "Halo " + NIM
+                    return render_template('/home/dumpAdmin.html', notif=notif)
+                else:
+                    notif = "Password salah"
+                    return render_template('/home/login.html',
+                    notif=notif)
         else:
-            session ['logged_in'] = True
-            flash('Login successful','success')
-            return redirect(url_for('index'))
-    return render_template('/home/login.html')
-
+            return render_template('/home/login.html')
 @application.route('/register/')
 def register():
     return render_template('/home/register.html')
 
 # untuk loginadmin
-@application.route('/loginadmin/', methods=['GET', 'POST'])
-def loginadmin():
-    if request.method == 'POST':
-        if request.form['username'] != 'admin' and request.form['password'] != 'pnj21':
-            flash('Invalid username/password','danger')
-        else:
-            session ['logged_in'] = True
-            flash('Login successful','success')
-            return redirect(url_for('indexadmin'))
-    return render_template('/home/loginadmin.html')
 
 # untuk logout
 @application.route('/logout/')
