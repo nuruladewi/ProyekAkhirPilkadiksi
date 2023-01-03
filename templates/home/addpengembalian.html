@@ -1,0 +1,80 @@
+{% extends 'layouts/baseadmin.html' %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block content %}
+
+<!-- Page content -->
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-xl-8 order-xl-1">
+      <div class="card">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Tambah Buku</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form action = " {{url_for('addpengembalian')}} " method="post">
+            <h6 class="heading-small text-muted mb-4">Informasi Pengembalian Buku</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-id_pengembalian">ID Pengembalian</label>
+                    <input type="text" id="input-id_pengembalian" name="id_pengembalian" class="form-control" placeholder="ID Pengembalian">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-tanggal_pengembalian">Tanggal Pengembalian</label>
+                    <input type="text" id="input-tanggal_pengembalian" name="tanggal_pengembalian" class="form-control" placeholder="Tanggal Pengembalian">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-denda">Denda</label>
+                    <input type="text" id="input-denda" name="denda" class="form-control" placeholder="Denda">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-id_buku">ID Buku</label>
+                    <input type="text" id="input-id_buku" name="id_buku" class="form-control" placeholder="ID Buku">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-id_anggota">ID Anggota</label>
+                    <input type="text" id="input-id_anggota" name="id_anggota" class="form-control" placeholder="ID Anggota">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-id_petugas">ID Petugas</label>
+                    <input type="text" id="input-id_petugas" name="id_petugas" class="form-control" placeholder="ID Petugas">
+                  </div>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-end pt-3">
+                  <button type="submit" class="btn btn-neutral ms-2">Tambahkan</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "includes/footer.html" %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

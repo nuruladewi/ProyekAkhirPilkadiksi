@@ -1,0 +1,140 @@
+<!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+
+
+
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="canonical" href="{{url_for('static', filename='img/LOGO PILKADIKSI_2022-removebg-preview.png')}}" alt="Logo Pilkadiksi PNJ">
+  
+  <title>
+    Dashboard - {% block title %} E-Vote {% endblock %} | Pilkadiksi PNJ
+  </title>
+
+  <!-- Favicon - loaded as static -->
+  <link rel="icon" href="{{url_for('static', filename='img/LOGO PILKADIKSI_2022-removebg-preview.png')}}" alt="Logo Pilkadiksi PNJ" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="/static/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Page plugins -->
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="/static/assets/css/argon.css?v=1.2.0" type="text/css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  
+
+  <!-- Specific CSS goes HERE -->
+  {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+
+<body class="">
+
+  {% include "includes/sidenav.html" %}
+
+  <div class="main-content" id="panel">
+
+    {% include "includes/navigation.html" %}
+
+    {% block content %}{% endblock content %}
+
+  </div>
+
+  {% include "includes/scripts.html" %}
+
+  <!-- Specific JS goes HERE --> 
+  {% block javascripts %}{% endblock javascripts %}
+
+  <script src="/static/assets/js/argon.js?v=1.2.0"></script>
+
+  <!-- jQuery -->
+  <script src="/static/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- ChartJS -->
+  <script src="/static/plugins/chart.js/Chart.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/dist/js/adminlte.min.js"></script>
+  <!-- Page specific script -->
+  <script>
+    $(function () {
+      /* ChartJS
+      * -------
+      * Here we will create a few charts using ChartJS
+      */
+
+      //-------------
+      //- DONUT CHART -
+      //-------------
+      // Get context with jQuery - using jQuery's .get() method.
+      var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+      var donutData        = {
+        labels: [
+            'Chrome',
+            'IE',
+            'FireFox',
+            'Safari',
+            'Opera',
+            'Navigator',
+        ],
+        datasets: [
+          {
+            data: [700,500,400,600,300,100],
+            backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+          }
+        ]
+      }
+      var donutOptions     = {
+        maintainAspectRatio : false,
+        responsive : true,
+      }
+      //Create pie or douhnut chart
+      // You can switch between pie and douhnut using the method below.
+      new Chart(donutChartCanvas, {
+        type: 'doughnut',
+        data: donutData,
+        options: donutOptions
+      })
+
+      //-------------
+      //- PIE CHART -
+      //-------------
+      // Get context with jQuery - using jQuery's .get() method.
+      var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+      var pieData        = donutData;
+      var pieOptions     = {
+        maintainAspectRatio : false,
+        responsive : true,
+      }
+      //Create pie or douhnut chart
+      // You can switch between pie and douhnut using the method below.
+      new Chart(pieChartCanvas, {
+        type: 'pie',
+        data: pieData,
+        options: pieOptions
+      })
+    })
+  </script>
+
+
+</body>
+
+</html>

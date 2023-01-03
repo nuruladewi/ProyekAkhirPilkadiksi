@@ -1,0 +1,80 @@
+{% extends 'layouts/baseadmin.html' %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block content %}
+
+<!-- Page content -->
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-xl-8 order-xl-1">
+      <div class="card">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Edit Informasi Buku</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form action = " {{url_for('editbook', id_buku=databuku[0])}} " method="post">
+            <h6 class="heading-small text-muted mb-4">Book information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-kode_buku">Kode Buku</label>
+                    <input type="text" id="input-kode_buku" name="kode_buku" class="form-control" value="{{databuku[1]}}" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-judul_buku">Judul Buku</label>
+                    <input type="text" id="input-judul_buku" name="judul_buku" class="form-control"  value="{{databuku[2]}}" required>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-penulis_buku">Penulis Buku</label>
+                    <input type="text" id="input-penulis_buku" name="penulis_buku" class="form-control"  value="{{databuku[3]}}" required>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-penerbit_buku">Penerbit Buku</label>
+                    <input type="text" id="input-penerbit_buku" name="penerbit_buku" class="form-control"  value="{{databuku[4]}}" required>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-tahun_penerbit">Tahun Terbit</label>
+                    <input type="text" id="input-tahun_penerbit" name="tahun_penerbit" class="form-control" value="{{databuku[5]}}" required>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-stok">Stok Buku</label>
+                    <input type="text" id="input-stok" name="stok" class="form-control"  value="{{databuku[6]}}" required>
+                  </div>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-end pt-3">
+                  <button type="submit" class="btn btn-neutral ms-2">Simpan</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "includes/footer.html" %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
