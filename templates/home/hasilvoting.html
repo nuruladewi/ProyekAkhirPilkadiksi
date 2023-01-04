@@ -39,15 +39,11 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="sort" data-sort="id_peminjaman">ID Peminjaman</th>
-                  <th scope="col" class="sort" data-sort="tanggal_pinjam">Waktu Peminjaman</th>
-                  <th scope="col" class="sort" data-sort="tanggal_kembali">Batas Peminjaman</th>
-                  <th scope="col" class="sort" data-sort="id_buku">ID Buku</th>
-                  <th scope="col" class="sort" data-sort="id_anggota">ID Anggota</th>
-                  <th scope="col" class="sort" data-sort="id_petugas">ID Petugas</th>
+                  <th scope="col" class="sort" data-sort="nim">ID Peminjaman</th>
+                  <th scope="col" class="sort" data-sort="pilihan">Waktu Peminjaman</th>
                 </tr>
               </thead>
-              {%for item in datapinjam %}
+              {%for item in hasilvoting %}
               <tbody class="list">
                 <tr>
                     <th scope="row">
@@ -55,18 +51,6 @@
                     </th>
                     <td>
                       <a href = " {{item}} "> {{ item [1] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [2] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [3] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [4] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [5] }} </a>
                     </td>
                   </tr>
                 </tbody>

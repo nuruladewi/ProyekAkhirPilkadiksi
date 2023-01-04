@@ -39,16 +39,13 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="sort" data-sort="id_anggota">ID Anggota</th>
-                  <th scope="col" class="sort" data-sort="kode_anggota">Kode Anggota</th>
-                  <th scope="col" class="sort" data-sort="nama_anggota">Nama</th>
-                  <th scope="col" class="sort" data-sort="jk_anggota">Jenis Kelamin</th>
-                  <th scope="col" class="sort" data-sort="jurusan_anggota">Jurusan</th>
-                  <th scope="col" class="sort" data-sort="no_telp_anggota">No Telepon</th>
-                  <th scope="col" class="sort" data-sort="alamat">Alamat</th>
+                  <th scope="col" class="sort" data-sort="nim">ID Anggota</th>
+                  <th scope="col" class="sort" data-sort="nama">Kode Anggota</th>
+                  <th scope="col" class="sort" data-sort="password">Nama</th>
+                  <th scope="col" class="sort" data-sort="jurusan">Jenis Kelamin</th>
                 </tr>
               </thead>
-              {%for item in dataanggota %}
+              {%for item in datamahasiswa %}
               <tbody class="list">
                 <tr>
                     <th scope="row">
@@ -64,19 +61,10 @@
                       <a href = " {{item}} "> {{ item [3] }} </a>
                     </td>
                     <td>
-                      <a href = " {{item}} "> {{ item [4] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [5] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [6] }} </a>
-                    </td>
-                    <td>
-                      <a href="{{url_for('editanggota', id_anggota=item[0])}}"> 
+                      <a href="#"> 
                         <button class="btn btn-neutral"> Update </button>
                       </a>
-                      <a href="{{url_for('deletedanggota', id_anggota=item[0])}} ">
+                      <a href="#">
                         <button class="btn btn-danger"> Delete </button>
                       </a>
                     </td>
@@ -87,7 +75,7 @@
                     <th Scope="col"> Klik untuk menambahkan Data </th>
                     <th></th>
                     <th></th>
-                    <th Scope="col"> <a href="{{url_for('addanggota')}}"> <button type="button" class="btn btn-neutral btn-block">
+                    <th Scope="col"> <a href="#"> <button type="button" class="btn btn-neutral btn-block">
                       Tambahkan data
                     </button> </a>
                     </th>
