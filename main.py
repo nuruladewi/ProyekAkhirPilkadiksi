@@ -76,7 +76,17 @@ def icons():
 
 @application.route('/daftarakun/')
 def daftarakun():
-    return render_template('/home/daftarakun.html')
+    db = getMysqlConnection()
+    try:
+        sqlstr = "SELECT * from mahasiswa"
+        cur = db.cursor()
+        cur.execute(sqlstr)
+        output_json = cur.fetchall()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return render_template('/home/daftarakun.html', dataanggota = output_json)
 
 @application.route('/hasilvoting/')
 def hasilvoting():
