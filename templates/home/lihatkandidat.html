@@ -37,80 +37,43 @@
 
   </head>
   <body>
-    
-    <!-- Navbar -->
 
-    <nav class="navbar navbar-expand-lg">
-      <div class="container">
-          <a class="navbar-brand" href="#">Pilkadiksi PNJ</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-              <a class="nav-link active fw-bolder" aria-current="page" href="{{ url_for('home')}}">Home</a>
-              <a class="nav-link" href="#">Kandidat</a>
-              <a class="nav-link buttong fw-bolder btn shadow-sm rounded" href=" {{ url_for('login')}} ">Login</a>
-              <!-- <a class="nav-link disabled">Disabled</a> -->
-            </div>
-          </div>
-      </div>
-    </nav>
-    <!-- Akhir Navbar -->
+      <!-- Akhir Navbar -->
 
-    <!-- Jumbotron -->
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <div class="row display-4">
-          <div class="col text-center">
-            <img src="{{ url_for('static', filename='img/LOGO PILKADIKSI_2022-removebg-preview.png')}}" alt="Logo Pilkadiksi" width="100px" class="img-fluid mx-auto d-block ">
-              <h1 class="title-text display-5"> E-Vote Pilkadiksi PNJ</h1>
-              <p class="lead text-umum">Pilihan Ketua Bidikmisi KIP-K PNJ berbasis elektronik.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Akhir Jumbotron -->
-
-    <!--CONTENTS-->
-    <!-- Container -->
-    <div class="container">
-
-        <!-- Info Panel -->
-        <div class="row justify-align-center">
-          <div class="col-lg-12 info-panel">
-          </div>  
-        </div>
-  
-    </div>
-    <!-- Akhir Container -->
-
-    <!-- Container Penjabaran -->
-    <section class="work-process-new ptb-100 dark-bg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <h2 class="text-title font-weight-normal"> PILKADIKSI PNJ <h2>
-                <p class="text-penjabaran"> Pilkadiksi merupakan salah satu program kerja dari Forum Mahasiswa Bidikmisi KIP-K Politeknik Negeri Jakarta yang bertujuan untuk meregenerasi Formadiksi PNJ menjadi lebih baik dengan terpilihnya pemimpin baru.</p>
-                <div class="d-flex justify-content-center mr-4">
-                    <button type="button" class="btn buttong btn-lg mt-3">Lihat Kandidat</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Akhir Container -->
     <!-- Container Tata Cara -->
-    <section class="work-process-new ptb-100 dark-bg">
+
+    <section class="work-process-new dark-bg">
+        
         <div class="container">
+            
             <div class="row justify-content-center">
+                <a href="{{ url_for('home')}}"><img style="width: 70px; height: 50px; margin-top: 20px;" src="{{url_for('static', filename='img/kiri.png')}}" alt=""></a>
                 <div class="col-md-9 col-lg-8">
-                    <div class="section-heading text-center mb-5">
-                        <h2 class="putih">Tata Cara E-Vote sebagai berikut </h2>
-                        <p class="lead putih">Tata Cara Melakukan E-Vote: </p>
+                    
+                    <div class="section-heading text-left mb-5">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                
+                            </div>
+                        </div>
+                        <img style="width: 200px; height: 200px; float: left" src="{{url_for('static', filename='img/LOGO PILKADIKSI_2022-removebg-preview.png')}}" alt=""> 
+                        <h6 class="navbar-brand">KANDIDAT</h6><br>
+                        <h2 class="navbar-brand">PILKADIKSI PNJ</h4>
+                        
+                        
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-lg-6 text-center mt-5">
+                    <img src="{{url_for('static', filename='img/paslon1.png')}}" alt=""><br>
+                    <a class="navbar-brand" href=""><button class="btn buttong btn-lg">Visi & Misi</button></a>
+                </div>
+                <div class="col-lg-6 text-center mt-5">
+                    <img src="{{url_for('static', filename='img/paslon2.png')}}" alt=""><br>
+                    <a class="navbar-brand" href=""><button class="btn buttong btn-lg">Visi & Misi</button></a>
+                </div>
+                <!-- <div class="col-md-12">
                     <div class="work-process-wrap text-center">
                         <div class="single-work-process">
                             <div class="work-process-icon-wrap oren-bg rounded-circle">
@@ -176,100 +139,15 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
       </section>  
     <!-- Akhir Container -->
 
-
-    <!--feature section start-->
-<!--    <section class="feature-content-two ptb-100 dark-bg">
-      <div class="container">
-          <div class="row justify-content-center">
-              INI UNTUK ISI CAROUSEL FOTO
-          </div>
-          <div class="row">
-            <div class="col-md-8">
-                <div class="section-heading text-center mb-4">
-                    <h2>Carousel kegiatan Pilkadiksi</h2>
-                </div>
-            </div>
-          </div>
-      </div>
-    </section>
-    </div> -->
-    <!--body content wrap end-->
-
 <!-- Footer -->
 <footer class="page-footer font-small blue pt-4 bg-oren">
-
-    <!-- Footer Links -->
-    <div class="container-fluid text-center text-md-left mb-4">
-  
-      <!-- Grid row -->
-      <div class="row">
-  
-        <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3">
-  
-          <!-- Content -->
-          <h5 class="navbar-brand" href="#">Pilkadiksi</h5>
-          <p class="nav-link-kuning">Pilihan Ketua Bidikmisi KIP-K PNJ</p>
-  
-        </div>
-        <!-- Grid column -->
-  
-        <hr class="clearfix w-100 d-md-none pb-3">
-  
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-  
-          <!-- Links -->
-          <h4 class="nav-link-putih text-uppercase">Quick Links</h4>
-          <ul class="nav flex-column dongker">
-              <li class="nav-item dongker">
-                  <a class="nav-link-kuning active dongker" href="{{ url_for('home')}}">Home</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link-kuning" href="{{ url_for('kandidat')}}">Kandidat</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link-kuning" href="#">Login</a>
-              </li>
-          </ul>  
-        </div>
-        <!-- Grid column -->
-  
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-  
-          <!-- Links -->
-          <h5 class="nav-link-putih text-uppercase">Contacts</h5>
-  
-          <ul class="nav-link-kuning list-unstyled">
-            <li>
-              <a class="nav-link-kuning" href="https://instagram.com/pilkadiksipnj/">@pilkadiksipnj</a>
-            </li>
-            <li>
-              <a class="nav-link-kuning" href="#!">pilkadiksipnj@formadiksipnj.com</a>
-            </li>
-            <li>
-              <a class="nav-link-kuning" href="https://wa.me/62895372461140">(+62)8953872461140 [Admin]</a>
-            </li>
-          </ul>
-  
-        </div>
-        <!-- Grid column -->
-  
-      </div>
-      <!-- Grid row -->
-  
-    </div>
-    <!-- Footer Links -->
-
-     <!-- Copyright -->
       <div class="footer-copyright text-center py-3">© 2022 Copyright:
         <a href="/"> Pilkadiksipnj.com</a>
     </div>
