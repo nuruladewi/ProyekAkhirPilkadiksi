@@ -152,6 +152,15 @@
     bottom: 0 !important;
 }
 
+.closing-bg {
+    background-image: linear-gradient(to right, rgb(255, 255, 255), #815EE4) !important;
+    position: relative !important;
+    text-align: justify !important;
+    background-size: cover  !important;
+    width: auto;
+    height:auto;
+}
+
 .floatingover {
     content: '' !important;
 }
