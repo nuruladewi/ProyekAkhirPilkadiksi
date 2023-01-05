@@ -82,6 +82,10 @@ def daftarakun():
 def hasilvoting():
     return render_template('/home/hasilvoting.html')
 
+@application.route('/kandidat/')
+def kandidat():
+    return render_template('/home/lihatkandidat.html')
+
 
 
 if __name__ == '__main__':
