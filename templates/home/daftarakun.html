@@ -39,13 +39,10 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="sort" data-sort="id_anggota">ID Anggota</th>
-                  <th scope="col" class="sort" data-sort="kode_anggota">Kode Anggota</th>
-                  <th scope="col" class="sort" data-sort="nama_anggota">Nama</th>
-                  <th scope="col" class="sort" data-sort="jk_anggota">Jenis Kelamin</th>
-                  <th scope="col" class="sort" data-sort="jurusan_anggota">Jurusan</th>
-                  <th scope="col" class="sort" data-sort="no_telp_anggota">No Telepon</th>
-                  <th scope="col" class="sort" data-sort="alamat">Alamat</th>
+                  <th scope="col" class="sort" data-sort="nim">NIM Mahasiswa</th>
+                  <th scope="col" class="sort" data-sort="nama_mahasiswa">Nama Mahasiswa</th>
+                  <th scope="col" class="sort" data-sort="password">Password</th>
+                  <th scope="col" class="sort" data-sort="jurusan">Jurusan</th>
                 </tr>
               </thead>
               {%for item in dataanggota %}
@@ -62,15 +59,6 @@
                     </td>
                     <td>
                       <a href = " {{item}} "> {{ item [3] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [4] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [5] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [6] }} </a>
                     </td>
                     <td>
                       <a href="{{url_for('editanggota', id_anggota=item[0])}}"> 
