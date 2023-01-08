@@ -186,7 +186,9 @@ def suksesvote():
 def kandidat():
     return render_template('/home/lihatkandidat.html')
 
-
+@application.route('/pilihkandidat/')
+def pilihkandidat():
+    return render_template('/home/lihatkandidatuser.html')
 
 if __name__ == '__main__':
     application.run(debug=True)

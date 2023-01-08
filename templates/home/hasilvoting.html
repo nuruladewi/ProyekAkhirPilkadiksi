@@ -9,11 +9,11 @@
       <div class="header-body">
         <div class="row align-items-center py-4">
           <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">Peminjaman Buku</h6>
+            <h6 class="h2 text-white d-inline-block mb-0">Hasil Voting</h6>
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
               <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item"><a href=" {{url_for('index')}} "><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item active" aria-current="page">Peminjaman</li>
+                <li class="breadcrumb-item active" aria-current="page">Voting</li>
               </ol>
             </nav>
           </div>
@@ -32,22 +32,18 @@
         <div class="card">
           <!-- Card header -->
           <div class="card-header border-0">
-            <h3 class="mb-0">Daftar Buku Yang Sedang Dipinjam</h3>
+            <h3 class="mb-0">Daftar Hasil Voting</h3>
           </div>
           <!-- Light table -->
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="sort" data-sort="id_peminjaman">ID Peminjaman</th>
-                  <th scope="col" class="sort" data-sort="tanggal_pinjam">Waktu Peminjaman</th>
-                  <th scope="col" class="sort" data-sort="tanggal_kembali">Batas Peminjaman</th>
-                  <th scope="col" class="sort" data-sort="id_buku">ID Buku</th>
-                  <th scope="col" class="sort" data-sort="id_anggota">ID Anggota</th>
-                  <th scope="col" class="sort" data-sort="id_petugas">ID Petugas</th>
+                  <th scope="col" class="sort text-center" data-sort="nim">NIM Mahasiswa</th>
+                  <th scope="col" class="sort text-center" data-sort="pilihan">Pilihan</th>
                 </tr>
               </thead>
-              {%for item in datapinjam %}
+              {%for item in hasil_voting %}
               <tbody class="list">
                 <tr>
                     <th scope="row">
@@ -55,18 +51,6 @@
                     </th>
                     <td>
                       <a href = " {{item}} "> {{ item [1] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [2] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [3] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [4] }} </a>
-                    </td>
-                    <td>
-                      <a href = " {{item}} "> {{ item [5] }} </a>
                     </td>
                   </tr>
                 </tbody>
