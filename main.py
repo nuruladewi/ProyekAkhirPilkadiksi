@@ -256,5 +256,35 @@ def kandidat():
 def pilihkandidat():
     return render_template('/home/lihatkandidatuser.html')
 
+@application.route('/voting/', methods=['GET','POST'])
+def voting():
+    if request.method == 'GET':
+        return render_template('/home/voting.html')
+    elif request.method == 'POST':
+        nim = request.form['nim']
+        pilihan = request.form['pilihan']
+        db = getMysqlConnection()
+        
+        try:
+            cur = db.cursor()
+            sukses = "data berhasil ditambah"
+            sqlstr = f"INSERT INTO `hasil_voting` (`nim`, `pilihan`) VALUES ("+nim+",'"+pilihan+"');"
+            print(sqlstr)
+            cur.execute(sqlstr)
+            db.commit()
+            cur.close()
+            print('sukses')
+            datavoting = cur.fetchall()
+            print(sukses)
+        except Exception as e:
+            print("Error in SQL :\n", e)
+        finally:
+            db.close()
+        return redirect(url_for('suksesvote'))
+    else:
+        return render_template('/home/voting.html', datavoting)
+
+
+
 if __name__ == '__main__':
     application.run(debug=True)
