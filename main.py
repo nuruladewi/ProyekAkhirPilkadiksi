@@ -211,10 +211,20 @@ def hasilvoting():
         db.close()
     return render_template('/home/hasilvoting.html', hasilvoting = output_json)
 
-@application.route('/addvoting/', methods=['GET','POST'])
+@application.route('/voting/', methods=['GET','POST'])
 def addvoting():
     if request.method == 'GET':
-        return render_template('/home/addvoting.html')
+        db = getMysqlConnection()
+        try:
+            sqlstr = "SELECT * from kandidat"
+            cur = db.cursor()
+            cur.execute(sqlstr)
+            output_json = cur.fetchall()
+        except Exception as e:
+            print("Error in SQL:\n", e)
+        finally:
+            db.close()
+        return render_template('/home/voting.html', data=output_json)
     elif request.method == 'POST':
         nim = request.form['nim']
         pilihan = request.form['pilihan']
@@ -237,7 +247,9 @@ def addvoting():
             db.close()
         return redirect(url_for('suksesvote'))
     else:
-        return render_template('/home/addvoting.html', datavoting)
+        return render_template('/home/voting.html', datavoting)
+
+
 
 @application.route('/suksesvote/')
 def suksesvote():
