@@ -43,9 +43,10 @@
                   <th scope="col" class="sort" data-sort="nama_mahasiswa">Nama Mahasiswa</th>
                   <th scope="col" class="sort" data-sort="password">Password</th>
                   <th scope="col" class="sort" data-sort="jurusan">Jurusan</th>
+                  <th scope="col" class="sort" data-sort="action">Aksi</th>
                 </tr>
               </thead>
-              {%for item in dataanggota %}
+              {%for item in dataakun %}
               <tbody class="list">
                 <tr>
                     <th scope="row">
@@ -61,26 +62,15 @@
                       <a href = " {{item}} "> {{ item [3] }} </a>
                     </td>
                     <td>
-                      <a href="{{url_for('editanggota', id_anggota=item[0])}}"> 
+                      <a href="{{url_for('editakun', nim=item[0])}}"> 
                         <button class="btn btn-neutral"> Update </button>
                       </a>
-                      <a href="{{url_for('deletedanggota', id_anggota=item[0])}} ">
+                      <a href="{{url_for('deleteakun', nim=item[0])}} ">
                         <button class="btn btn-danger"> Delete </button>
                       </a>
                     </td>
                   </tr>
                 </tbody>
-                <tfoot>
-                  <tr>
-                    <th Scope="col"> Klik untuk menambahkan Data </th>
-                    <th></th>
-                    <th></th>
-                    <th Scope="col"> <a href="{{url_for('addanggota')}}"> <button type="button" class="btn btn-neutral btn-block">
-                      Tambahkan data
-                    </button> </a>
-                    </th>
-                  </tr>
-                </tfoot>
                 {%endfor%}
             </table>
           </div>
@@ -88,6 +78,11 @@
           <div class="card-footer py-4">
             <nav aria-label="...">
               <ul class="pagination justify-content-end mb-0">
+                <li class="page-item">
+                  <a href="{{url_for('addakun')}}">
+                    <button type="button" class="btn btn-neutral btn-block">Tambah Data</button>
+                  </a>
+                </li>
                 <li class="page-item disabled">
                   <a class="page-link" href="#" tabindex="-1">
                     <i class="fas fa-angle-left"></i>

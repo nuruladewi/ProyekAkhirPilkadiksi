@@ -129,7 +129,73 @@ def addakun():
     else:
         return render_template('/home/addakun.html', datamahasiswa)
 
+@application.route('/editakun/<int:nim>/')
+def editakun(nim):
+    db = getMysqlConnection()
+    try:
+        sqlstr = f"SELECT * from mahasiswa where nim={nim}"
+        cur = db.cursor()
+        cur.execute(sqlstr)
+        output_json = cur.fetchone()
+        cur.close()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return render_template('/home/editakun.html', datamahasiswa = output_json)
 
+@application.route('/editedakun/<int:nim>/')
+def editedakun(nim):
+    db = getMysqlConnection()
+    nama = request.form['nama']
+    password = request.form['password']
+    jurusan = request.form['jurusan']
+        
+    try:
+        sqlstr = f"SELECT * from mahasiswa where nim={nim}"
+        cur = db.cursor()
+        cur.execute(sqlstr)
+        old_data = cur.fetchone()
+        cur.close()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+
+    if len(nama) == 0:
+        nama = old_data[0][1]
+    if len(password) == 0:
+        password = old_data[0][2]
+    if len(jurusan) == 0:
+        jurusan = old_data[0][3]
+        
+    try:
+        cur = db.cursor()
+        sqlstr = f"update mahasiswa set nama = '{nama}', password = '{password}', jurusan = {jurusan}"             
+        cur.execute(sqlstr)
+        db.commit()
+        cur.close()
+        db.close()
+        print('sukses')
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return redirect(url_for('daftarakun'))
+
+@application.route('/deleteakun/<int:nim>', methods=['GET', 'POST'])
+def deleteakun(nim):
+    db = getMysqlConnection()
+    try:
+        cur = db.cursor()
+        sqlstr = f"delete from mahasisw where nim={nim}"
+        cur.execute(sqlstr)
+        db.commit()
+        cur.close()
+        print('deleted sukses')
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return redirect(url_for('daftarakun'))
 
 @application.route('/hasilvoting/')
 def hasilvoting():
