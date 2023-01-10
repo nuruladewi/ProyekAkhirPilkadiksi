@@ -97,7 +97,7 @@
 }
 
 .bg-oren{
-    background-image: linear-gradient(to top, rgba(0,0,0), rgba(30,3,43)) !important;
+    background-image: linear-gradient(to top, rgba(0,0,0), rgb(27, 1, 39)) !important;
 }
 
 .dongker {
@@ -114,7 +114,7 @@
     background-position: center !important;
     background-size: cover  !important;
     position: relative !important;
-    box-shadow: #1e032b;
+    box-shadow: #3a0852;
     margin-bottom: -0.01px;
 }
 
@@ -152,6 +152,15 @@
     bottom: 0 !important;
 }
 
+.closing-bg {
+    background-image: linear-gradient(to right, rgb(255, 255, 255), #815EE4) !important;
+    position: relative !important;
+    text-align: justify !important;
+    background-size: cover  !important;
+    width: auto;
+    height:auto;
+}
+
 .floatingover {
     content: '' !important;
 }
@@ -176,7 +185,7 @@
 
 .text-penjabaran {
     
-    color: white !important;
+    color: rgb(35, 3, 37) !important;
     font-weight: 300;
     font-size:large !important;
     text-justify: auto !important;
@@ -186,7 +195,7 @@
 
 .text-title {
     margin-right: 30px !important;
-    color: white !important;
+    color: rgb(35, 3, 37) !important;
     font-weight: bolder;
     text-justify: auto !important;
     text-align: center !important;
