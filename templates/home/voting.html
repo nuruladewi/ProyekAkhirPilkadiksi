@@ -28,13 +28,13 @@
               <div class="text-center mb-4">
                 <small> Masukkan username dan pilih kandidat <br> di bawah ini!</small>
               </div>
-              <form role="form" method="post" action="{{url_for('voting', nim = data[0][0])}}">
+              <form role="form" method="post" action="{{url_for('addvoting')}}">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                     </div>
-                    <input class="form-control" placeholder="nim" type="text" value="data[0][1]" name="nim" required autofocus>
+                    <input class="form-control" placeholder="nim" type="text" name="nim" required autofocus>
                   </div>
                 </div>
                 <div class="form-group">
@@ -42,10 +42,10 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <label for="inputState" class="form-control" placeholder="pilihan" type="pilihan" name="pilihan">pilihan</label>
-                      <select id="inputState" class="form-select" name="nim">
+                    <label for="input-group-prepend" class="form-control" placeholder="pilihan" type="pilihan" name="pilihan">pilihan</label>
+                      <select id="inputState" class="form-select" name="pilihan">
                       <hr>
-                      {%for item in data%}
+                      {%for item in datavoting%}
                         <option value="{{item[0]}}">{{item[1]}}</option>
                       {%endfor%}
                       </select>
