@@ -211,24 +211,12 @@ def hasilvoting():
         db.close()
     return render_template('/home/hasilvoting.html', hasilvoting = output_json)
 
-@application.route('/voting/', methods=['GET','POST'])
+@application.route('/addvoting/', methods=['GET','POST'])
 def addvoting():
-    if request.method == 'GET':
-        db = getMysqlConnection()
-        try:
-            sqlstr = "SELECT * from kandidat"
-            cur = db.cursor()
-            cur.execute(sqlstr)
-            output_json = cur.fetchall()
-        except Exception as e:
-            print("Error in SQL:\n", e)
-        finally:
-            db.close()
-        return render_template('/home/voting.html', data=output_json)
-    elif request.method == 'POST':
+    db = getMysqlConnection()
+    if request.method == 'POST':
         nim = request.form['nim']
         pilihan = request.form['pilihan']
-        db = getMysqlConnection()
         
         try:
             cur = db.cursor()
@@ -239,17 +227,23 @@ def addvoting():
             db.commit()
             cur.close()
             print('sukses')
-            datavoting = cur.fetchall()
-            print(sukses)
         except Exception as e:
             print("Error in SQL :\n", e)
         finally:
             db.close()
         return redirect(url_for('suksesvote'))
-    else:
-        return render_template('/home/voting.html', datavoting)
-
-
+    try:
+        cur = db.cursor()
+        sqlstr = f"select id_kandidat from kandidat"
+        cur.execute(sqlstr)
+        print('sukses')
+        output_json = cur.fetchall()
+        cur.close()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+        return render_template('/home/voting.html', datavoting = output_json)
 
 @application.route('/suksesvote/')
 def suksesvote():
@@ -267,34 +261,6 @@ def kandidat():
 @application.route('/pilihkandidat/')
 def pilihkandidat():
     return render_template('/home/lihatkandidatuser.html')
-
-@application.route('/voting/', methods=['GET','POST'])
-def voting():
-    if request.method == 'GET':
-        return render_template('/home/voting.html')
-    elif request.method == 'POST':
-        nim = request.form['nim']
-        pilihan = request.form['pilihan']
-        db = getMysqlConnection()
-        
-        try:
-            cur = db.cursor()
-            sukses = "data berhasil ditambah"
-            sqlstr = f"INSERT INTO `hasil_voting` (`nim`, `pilihan`) VALUES ("+nim+",'"+pilihan+"');"
-            print(sqlstr)
-            cur.execute(sqlstr)
-            db.commit()
-            cur.close()
-            print('sukses')
-            datavoting = cur.fetchall()
-            print(sukses)
-        except Exception as e:
-            print("Error in SQL :\n", e)
-        finally:
-            db.close()
-        return redirect(url_for('suksesvote'))
-    else:
-        return render_template('/home/voting.html', datavoting)
 
 
 
