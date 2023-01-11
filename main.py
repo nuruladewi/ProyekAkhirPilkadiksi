@@ -26,32 +26,46 @@ def login():
         return render_template('/home/login.html')
     elif request.method == 'POST':
         
-        NIM = request.form['NIM']
+        nim= request.form['nim']
         password = request.form['password']
-        if (NIM != '' and password !=''):
+        if (nim != '' and password !=''):
             db = getMysqlConnection()
             cur = db.cursor()
-            cur.execute ("SELECT * from `login` WHERE `NIM`='"+NIM+"'") 
+            cur.execute ("SELECT * from `mahasiswa` WHERE `nim`='"+nim+"'") 
+            data= cur.fetchone()
+            if data[2] == password: 
+                if data[2] == None:
+                    notif = "Username Salah"
+                    return render_template('/home/login.html', notif=notif)
+                elif data[2]==password:
+                    notif = "Halo " + nim
+                    return render_template('/home/dumpAdmin.html', notif=notif)
+        else:
+            return render_template('/home/login.html')
+
+@application.route('/Login&admin/', methods=['GET', 'POST'])
+def loginadmin():
+    if request.method == 'GET':
+        return render_template('/home/login.html')
+    elif request.method == 'POST':
+        
+        username = request.form['username']
+        password = request.form['password']
+        
+        if (username != '' and password !=''):
+            db = getMysqlConnection()
+            cur = db.cursor()
+            cur.execute ("SELECT * from `admin` WHERE `username`='"+username+"'") 
             data= cur.fetchone()
             if data[1] == password: 
                 if data == None:
-                    notif = "NIM Salah"
-                    return render_template('/home/login.html')
+                    notif = "username Salah"
+                    return render_template('/home/login.html', notif=notif)
                 elif data[1]==password:
-                    notif = "Halo " + NIM
-                    return render_template('/home/dumpAdmin.html',notif=notif)   
-            else:
-                cur.execute ("SELECT * from `admin` WHERE `NIM`='"+NIM+"'") 
-                data= cur.fetchone()
-                if data[1]==password:
-                    notif = "Halo " + NIM
-                    return render_template('/home/dumpAdmin.html', notif=notif)
-                else:
-                    notif = "Password salah"
-                    return render_template('/home/login.html',
-                    notif=notif)
+                    notif = "Halo " + username
+                    return render_template('/home/dumpAdmin.html',notif=notif)
         else:
-            return render_template('/home/login.html')
+            return render_template('/home/login.html') 
 @application.route('/register/')
 def register():
     return render_template('/home/register.html')
