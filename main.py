@@ -39,14 +39,14 @@ def login():
                     return render_template('/home/login.html', notif=notif)
                 elif data[2]==password:
                     notif = "Halo " + nim
-                    return render_template('/home/dumpAdmin.html', notif=notif)
+                    return render_template('/home/lihatkandidatuser.html', notif=notif)
         else:
             return render_template('/home/login.html')
 
 @application.route('/Login&admin/', methods=['GET', 'POST'])
 def loginadmin():
     if request.method == 'GET':
-        return render_template('/home/login.html')
+        return render_template('/home/loginadmin.html')
     elif request.method == 'POST':
         
         username = request.form['username']
@@ -60,12 +60,12 @@ def loginadmin():
             if data[1] == password: 
                 if data == None:
                     notif = "username Salah"
-                    return render_template('/home/login.html', notif=notif)
+                    return render_template('/home/loginadmin.html', notif=notif)
                 elif data[1]==password:
                     notif = "Halo " + username
-                    return render_template('/home/dumpAdmin.html',notif=notif)
+                    return render_template('/home/index.html',notif=notif)
         else:
-            return render_template('/home/login.html') 
+            return render_template('/home/loginadmin.html') 
 @application.route('/register/')
 def register():
     return render_template('/home/register.html')
