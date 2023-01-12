@@ -1,6 +1,6 @@
-{% extends 'layouts/baseadmin.html' %}
+{% extends 'layouts/base.html' %}
 
-{% block title %} Profile {% endblock title %}
+{% block title %} Akun Mahasiswa {% endblock title %}
 
 {% block content %}
 
@@ -17,46 +17,34 @@
           </div>
         </div>
         <div class="card-body">
-          <form action = " {{url_for('editanggota', id_anggota=dataanggota[0])}} " method="post">
+          <form action = " {{url_for('editakun', id_anggota=dataakun[0])}} " method="post">
             <h6 class="heading-small text-muted mb-4">Member information</h6>
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-kode_anggota">Kode</label>
-                    <input type="text" id="input-kode_anggota" name="kode_anggota" class="form-control" value="{{dataanggota[1]}}" required>
+                    <label class="form-control-label" for="input-nim">NIM</label>
+                    <input type="text" id="input-nim" name="nim" class="form-control" value="{{dataakun[1]}}" required>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-nama_anggota">Nama</label>
-                    <input type="text" id="input-nama_anggota" name="nama_anggota" class="form-control"  value="{{dataanggota[2]}}" required>
+                    <label class="form-control-label" for="input-nama">Nama</label>
+                    <input type="text" id="input-nama" name="nama" class="form-control"  value="{{dataakun[2]}}" required>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-jk_anggota">Jenis Kelamin</label>
-                    <input type="text" id="input-jk_anggota" name="jk_anggota" class="form-control"  value="{{dataanggota[3]}}" required>
+                    <label class="form-control-label" for="input-password">Password</label>
+                    <input type="text" id="input-password" name="password" class="form-control"  value="{{dataakun[3]}}" required>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-jurusan_anggota">Jurusan</label>
-                    <input type="text" id="input-jurusan_anggota" name="jurusan_anggota" class="form-control"  value="{{dataanggota[4]}}" required>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-no_telp_anggota">No Telepon</label>
-                    <input type="text" id="input-no_telp_anggota" name="no_telp_anggota" class="form-control" value="{{dataanggota[5]}}" required>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-alamat_anggota">Alamat</label>
-                    <input type="text" id="input-alamat_anggota" name="alamat_anggota" class="form-control"  value="{{dataanggota[6]}}" required>
+                    <label class="form-control-label" for="input-jurusan">Jurusan mahasiswa</label>
+                    <input type="text" id="input-jurusan" name="jurusan" class="form-control"  value="{{dataakun[4]}}" required>
                   </div>
                 </div>
                 <div class="col-lg-6 d-flex justify-content-end pt-3">
