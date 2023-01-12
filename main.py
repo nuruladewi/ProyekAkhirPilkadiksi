@@ -26,32 +26,46 @@ def login():
         return render_template('/home/login.html')
     elif request.method == 'POST':
         
-        NIM = request.form['NIM']
+        nim= request.form['nim']
         password = request.form['password']
-        if (NIM != '' and password !=''):
+        if (nim != '' and password !=''):
             db = getMysqlConnection()
             cur = db.cursor()
-            cur.execute ("SELECT * from `login` WHERE `NIM`='"+NIM+"'") 
+            cur.execute ("SELECT * from `mahasiswa` WHERE `nim`='"+nim+"'") 
+            data= cur.fetchone()
+            if data[2] == password: 
+                if data[2] == None:
+                    notif = "Username Salah"
+                    return render_template('/home/login.html', notif=notif)
+                elif data[2]==password:
+                    notif = "Halo " + nim
+                    return render_template('/home/lihatkandidatuser.html', notif=notif)
+        else:
+            return render_template('/home/login.html')
+
+@application.route('/Login&admin/', methods=['GET', 'POST'])
+def loginadmin():
+    if request.method == 'GET':
+        return render_template('/home/loginadmin.html')
+    elif request.method == 'POST':
+        
+        username = request.form['username']
+        password = request.form['password']
+        
+        if (username != '' and password !=''):
+            db = getMysqlConnection()
+            cur = db.cursor()
+            cur.execute ("SELECT * from `admin` WHERE `username`='"+username+"'") 
             data= cur.fetchone()
             if data[1] == password: 
                 if data == None:
-                    notif = "NIM Salah"
-                    return render_template('/home/login.html')
+                    notif = "username Salah"
+                    return render_template('/home/loginadmin.html', notif=notif)
                 elif data[1]==password:
-                    notif = "Halo " + NIM
-                    return render_template('/home/dumpAdmin.html',notif=notif)   
-            else:
-                cur.execute ("SELECT * from `admin` WHERE `NIM`='"+NIM+"'") 
-                data= cur.fetchone()
-                if data[1]==password:
-                    notif = "Halo " + NIM
-                    return render_template('/home/dumpAdmin.html', notif=notif)
-                else:
-                    notif = "Password salah"
-                    return render_template('/home/login.html',
-                    notif=notif)
+                    notif = "Halo " + username
+                    return render_template('/home/index.html',notif=notif)
         else:
-            return render_template('/home/login.html')
+            return render_template('/home/loginadmin.html') 
 @application.route('/register/')
 def register():
     return render_template('/home/register.html')
@@ -129,7 +143,73 @@ def addakun():
     else:
         return render_template('/home/addakun.html', datamahasiswa)
 
+@application.route('/editakun/<int:nim>/')
+def editakun(nim):
+    db = getMysqlConnection()
+    try:
+        sqlstr = f"SELECT * from mahasiswa where nim={nim}"
+        cur = db.cursor()
+        cur.execute(sqlstr)
+        output_json = cur.fetchone()
+        cur.close()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return render_template('/home/editakun.html', datamahasiswa = output_json)
 
+@application.route('/editedakun/<int:nim>/')
+def editedakun(nim):
+    db = getMysqlConnection()
+    nama = request.form['nama']
+    password = request.form['password']
+    jurusan = request.form['jurusan']
+        
+    try:
+        sqlstr = f"SELECT * from mahasiswa where nim={nim}"
+        cur = db.cursor()
+        cur.execute(sqlstr)
+        old_data = cur.fetchone()
+        cur.close()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+
+    if len(nama) == 0:
+        nama = old_data[0][1]
+    if len(password) == 0:
+        password = old_data[0][2]
+    if len(jurusan) == 0:
+        jurusan = old_data[0][3]
+        
+    try:
+        cur = db.cursor()
+        sqlstr = f"update mahasiswa set nama = '{nama}', password = '{password}', jurusan = {jurusan}"             
+        cur.execute(sqlstr)
+        db.commit()
+        cur.close()
+        db.close()
+        print('sukses')
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return redirect(url_for('daftarakun'))
+
+@application.route('/deleteakun/<int:nim>', methods=['GET', 'POST'])
+def deleteakun(nim):
+    db = getMysqlConnection()
+    try:
+        cur = db.cursor()
+        sqlstr = f"delete from mahasisw where nim={nim}"
+        cur.execute(sqlstr)
+        db.commit()
+        cur.close()
+        print('deleted sukses')
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return redirect(url_for('daftarakun'))
 
 @application.route('/hasilvoting/')
 def hasilvoting():
@@ -147,12 +227,10 @@ def hasilvoting():
 
 @application.route('/addvoting/', methods=['GET','POST'])
 def addvoting():
-    if request.method == 'GET':
-        return render_template('/home/addvoting.html')
-    elif request.method == 'POST':
+    db = getMysqlConnection()
+    if request.method == 'POST':
         nim = request.form['nim']
         pilihan = request.form['pilihan']
-        db = getMysqlConnection()
         
         try:
             cur = db.cursor()
@@ -163,15 +241,23 @@ def addvoting():
             db.commit()
             cur.close()
             print('sukses')
-            datavoting = cur.fetchall()
-            print(sukses)
         except Exception as e:
             print("Error in SQL :\n", e)
         finally:
             db.close()
         return redirect(url_for('suksesvote'))
-    else:
-        return render_template('/home/addvoting.html', datavoting)
+    try:
+        cur = db.cursor()
+        sqlstr = f"select id_kandidat from kandidat"
+        cur.execute(sqlstr)
+        print('sukses')
+        output_json = cur.fetchall()
+        cur.close()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+        return render_template('/home/voting.html', datavoting = output_json)
 
 @application.route('/suksesvote/')
 def suksesvote():
@@ -185,6 +271,18 @@ def suksesvote():
 @application.route('/kandidat/')
 def kandidat():
     return render_template('/home/lihatkandidat.html')
+
+@application.route('/pilihkandidat/')
+def pilihkandidat():
+    return render_template('/home/lihatkandidatuser.html')
+
+@application.route('/visimisi1/')
+def visimisi1():
+    return render_template('/home/visimisi1.html')
+
+@application.route('/visimisi2/')
+def visimisi2():
+    return render_template('/home/visimisi2.html')
 
 
 
