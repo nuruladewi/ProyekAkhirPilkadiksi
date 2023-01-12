@@ -276,6 +276,14 @@ def kandidat():
 def pilihkandidat():
     return render_template('/home/lihatkandidatuser.html')
 
+@application.route('/visimisi1/')
+def visimisi1():
+    return render_template('/home/visimisi1.html')
+
+@application.route('/visimisi2/')
+def visimisi2():
+    return render_template('/home/visimisi2.html')
+
 
 
 if __name__ == '__main__':
