@@ -1,5 +1,9 @@
 
 /* Navbar */
+h6 {
+    text-align: right;
+    color: white;
+}
 
 .navbar {
     position: relative !important;
