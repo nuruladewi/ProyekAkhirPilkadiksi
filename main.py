@@ -79,7 +79,11 @@ def logout():
     session.pop('logged_in', None)
     flash('Logout successful','success')
     return redirect(url_for('login'))
-
+@application.route('/logoutadmin/')
+def logoutadmin():
+    session.pop('logged_in', None)
+    flash('Logout successful','success')
+    return redirect(url_for('loginadmin'))
 
 # untuk Admin
 @application.route('/index/')
@@ -242,7 +246,6 @@ def kandidat():
 @application.route('/pilihkandidat/')
 def pilihkandidat():
     return render_template('/home/lihatkandidatuser.html')
-
 @application.route('/voting/', methods=['GET','POST'])
 def voting():
 
