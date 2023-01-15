@@ -49,7 +49,7 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
               <a class="nav-link active fw-bolder" aria-current="page" href="{{ url_for('home')}}">Home</a>
-              <a class="nav-link" href="#">Kandidat</a>
+              <a class="nav-link" href=" {{url_for('kandidat')}} ">Kandidat</a>
               <a class="nav-link buttong fw-bolder btn shadow-sm rounded" href=" {{ url_for('login')}} ">Login</a>
               <!-- <a class="nav-link disabled">Disabled</a> -->
             </div>
@@ -92,8 +92,10 @@
                 <h2 class="text-title font-weight-normal"> PILKADIKSI PNJ <h2>
                 <p class="text-penjabaran"> Pilkadiksi merupakan salah satu program kerja dari Forum Mahasiswa Bidikmisi KIP-K Politeknik Negeri Jakarta yang bertujuan untuk meregenerasi Formadiksi PNJ menjadi lebih baik dengan terpilihnya pemimpin baru.</p>
                 <div class="d-flex justify-content-center mr-4">
+                  <a href=" {{url_for('kandidat')}} ">
                     <button type="button" class="btn buttong btn-lg mt-3">Lihat Kandidat</button>
-                </div>
+                  </a>
+                  </div>
             </div>
         </div>
     </section>
