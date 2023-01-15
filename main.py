@@ -247,7 +247,17 @@ def pilihkandidat():
 def voting():
 
     if request.method == 'GET':
-        return render_template('/home/voting.html')
+        db = getMysqlConnection()
+        try:
+            sqlstr = "SELECT * from kandidat"
+            cur = db.cursor()
+            cur.execute(sqlstr)
+            output_json = cur.fetchall()
+        except Exception as e:
+            print("Error in SQL:\n", e)
+        finally:
+            db.close()
+        return render_template('/home/voting.html', kandidat=output_json)
     elif request.method == 'POST':
         nim = request.form['nim']
         pilihan = request.form['pilihan']
@@ -272,19 +282,7 @@ def voting():
     else:
         return render_template('/home/voting.html', datavoting)
 
-@application.route('/voting/')
-def i():
-    db = getMysqlConnection()
-    try:
-        sqlstr = "SELECT * from kandidat"
-        cur = db.cursor()
-        cur.execute(sqlstr)
-        output_json = cur.fetchall()
-    except Exception as e:
-        print("Error in SQL:\n", e)
-    finally:
-        db.close()
-    return render_template('/home/voting.html', kandidat=output_json)
+
 
 
 if __name__ == '__main__':
