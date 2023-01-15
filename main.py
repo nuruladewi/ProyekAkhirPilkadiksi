@@ -121,7 +121,17 @@ def daftarakun():
 @application.route('/addakun/', methods=['GET','POST'])
 def addakun():
     if request.method == 'GET':
-        return render_template('/home/addakun.html')
+        db = getMysqlConnection()
+        try:
+            sqlstr = "SELECT * from jurusan"
+            cur = db.cursor()
+            cur.execute(sqlstr)
+            output_json = cur.fetchall()
+        except Exception as e:
+            print("Error in SQL:\n", e)
+        finally:
+            db.close()
+        return render_template('/home/addakun.html', jurusan = output_json)
     elif request.method == 'POST':
         nim = request.form['nim']
         nama = request.form['nama']
@@ -205,7 +215,7 @@ def deleteakun(nim):
     db = getMysqlConnection()
     try:
         cur = db.cursor()
-        sqlstr = f"delete from mahasisw where nim={nim}"
+        sqlstr = f"delete from mahasiswa where nim={nim}"
         cur.execute(sqlstr)
         db.commit()
         cur.close()
@@ -246,6 +256,7 @@ def kandidat():
 @application.route('/pilihkandidat/')
 def pilihkandidat():
     return render_template('/home/lihatkandidatuser.html')
+
 @application.route('/voting/', methods=['GET','POST'])
 def voting():
 
