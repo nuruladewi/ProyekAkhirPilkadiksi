@@ -38,7 +38,7 @@ def login():
                     return render_template('/home/login.html', notif=notif)
                 elif data[2]==password:
                     notif = data[1]
-                    return redirect(url_for('pilihkandidat', notif=notif))
+                    return render_template('/home/lihatkandidatuser.html', notif=notif)
         else:
             return render_template('/home/login.html')
         cnim=nim

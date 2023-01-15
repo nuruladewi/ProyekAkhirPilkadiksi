@@ -24,6 +24,14 @@ h6 {
     font-size: 32px !important;
 }
 
+.navbar-brand-btn{
+    color: white  !important;
+    text-shadow: 2.5px 1px 2px #d97856 !important;
+    text-transform: uppercase !important;
+    font-family: 'Contrail One', cursive !important;
+    font-size: 24px !important
+}
+
 .nav-link {
     color: white  !important;
     font-family: 'Ruda', sans-serif !important;
@@ -101,7 +109,7 @@ h6 {
 }
 
 .bg-oren{
-    background-image: linear-gradient(to top, rgba(0,0,0), rgb(27, 1, 39)) !important;
+    background-image: linear-gradient(to top, rgba(0,0,0), rgb(30, 3, 43)) !important;
 }
 
 .dongker {
@@ -189,7 +197,7 @@ h6 {
 
 .text-penjabaran {
     
-    color: rgb(35, 3, 37) !important;
+    color: white !important;
     font-weight: 300;
     font-size:large !important;
     text-justify: auto !important;
@@ -199,7 +207,7 @@ h6 {
 
 .text-title {
     margin-right: 30px !important;
-    color: rgb(35, 3, 37) !important;
+    color: white !important;
     font-weight: bolder;
     text-justify: auto !important;
     text-align: center !important;
