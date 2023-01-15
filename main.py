@@ -1,5 +1,4 @@
 #import library
-from ast import pattern
 from flask import Flask, render_template, request, redirect, url_for, flash, redirect, request, session, flash, jsonify
 from auth import login
 from flask_mysqldb import MySQL
@@ -38,7 +37,7 @@ def login():
                     notif = "Username Salah"
                     return render_template('/home/login.html', notif=notif)
                 elif data[2]==password:
-                    notif = "Halo " + nim
+                    notif = data[1]
                     return render_template('/home/lihatkandidatuser.html', notif=notif)
         else:
             return render_template('/home/login.html')
@@ -272,8 +271,17 @@ def kandidat():
 def pilihkandidat():
     return render_template('/home/lihatkandidatuser.html')
 
+@application.route('/visimisi1/')
+def visimisi1():
+    return render_template('/home/visimisi1.html')
+
+@application.route('/visimisi2/')
+def visimisi2():
+    return render_template('/home/visimisi2.html')
+
 @application.route('/voting/', methods=['GET','POST'])
 def voting():
+
     if request.method == 'GET':
         return render_template('/home/voting.html')
     elif request.method == 'POST':
@@ -300,6 +308,19 @@ def voting():
     else:
         return render_template('/home/voting.html', datavoting)
 
+@application.route('/voting/')
+def i():
+    db = getMysqlConnection()
+    try:
+        sqlstr = "SELECT * from kandidat"
+        cur = db.cursor()
+        cur.execute(sqlstr)
+        output_json = cur.fetchall()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return render_template('/home/voting.html', kandidat=output_json)
 
 
 if __name__ == '__main__':

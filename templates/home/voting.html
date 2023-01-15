@@ -42,17 +42,17 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <label for="input-group-prepend" class="form-control" placeholder="pilihan" type="pilihan" name="pilihan">pilihan</label>
-                      <select id="inputState" class="form-select" name="pilihan">
-                      <hr>
-                      {%for item in datavoting%}
+                    <select for="input-group-prepend" class="form-control" placeholder="pilihan" type="pilihan" name="pilihan" multiplex>pilihan
+                        <br>
+                        <option selected disabled> --Pilih Kandidat-- </option>
+                      {%for item in kandidat%}
                         <option value="{{item[0]}}">{{item[1]}}</option>
                       {%endfor%}
                       </select>
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary my-4">Vote </button>
+                  <button type="submit" class="btn btn-primary my-4">Vote</button>
                 </div>
               </form>
             </div>
