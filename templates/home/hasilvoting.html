@@ -43,14 +43,14 @@
                   <th scope="col" class="sort text-center" data-sort="pilihan">Pilihan</th>
                 </tr>
               </thead>
-              {%for item in hasil_voting %}
+              {%for item in hasilvoting%}
               <tbody class="list">
                 <tr>
                     <th scope="row">
-                      <a href = " {{item}} "> {{ item [0] }} </a>
+                      <a href = " {{item}} "> {{ item[0] }} </a>
                     </th>
                     <td>
-                      <a href = " {{item}} "> {{ item [1] }} </a>
+                      <a href = " {{item}} "> {{ item[1] }} </a>
                     </td>
                   </tr>
                 </tbody>
