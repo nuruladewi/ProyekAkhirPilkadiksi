@@ -43,22 +43,63 @@
     <!-- Container Tata Cara -->
 
     <section class="work-process-new dark-bg">
-        
+   
+         <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-6" id="exampleModalLabel">Visi & Misi Calon 1</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body dongker">
+        Visi:
+        <br> Membentuk mahasiswa menjadi pribadi yang aktif, kreatif, dan produktif dalam jalannya masing-masing.<br>                      
+        Misi:
+        <br> - Menjadi wadah aspirasi mahasiswa dan berusaha mewujudkan keinginan mereka dengan cara terbaik.
+        <br> - Pendukung utama mahasiswa untuk mengikuti kompetisi regional, nasional, maupun internasional..
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-6" id="exampleModalLabel">Visi & Misi Calon 2</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body dongker">
+        Visi:
+        <br> Membentuk mahasiswa menjadi pribadi yang aktif, kreatif, dan produktif dalam jalannya masing-masing.<br>                      
+        Misi:
+        <br> - Menjadi wadah aspirasi mahasiswa dan berusaha mewujudkan keinginan mereka dengan cara terbaik.
+        <br> - Pendukung utama mahasiswa untuk mengikuti kompetisi regional, nasional, maupun internasional..
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
         <div class="container">
             <a href="{{ url_for('home')}}"><img style="width: 70px; height: 50px; margin-top: 20px;" src="{{url_for('static', filename='img/kiri.png')}}" alt=""></a>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav ml-auto">
-                <a class="nav-link active fw-bolder" aria-current="page" href="#">Welcome {{notif}}</a>
+                <a class="nav-link active fw-bolder" aria-current="page" href="#"></a>
               </div>
             </div>
+            <h6>Welcome {{notif}}</h6>
             <div class="row justify-content-center">
                 <div class="row"></div>
                 <div class="col-md-9 col-lg-8">
-                    
                     <div class="section-heading text-left mb-5">
                         <div class="row">
-                            <div class="col-lg-3">
-                                
+                            <div class="col-lg-3">                     
                             </div>
                         </div>
                         <img style="width: 150px; height: 150px; float: left" src="{{url_for('static', filename='img/LOGO PILKADIKSI_2022-removebg-preview.png')}}" alt=""> 
@@ -72,14 +113,14 @@
             <div class="row">
                 <div class="col-lg-6 text-center mt-5">
                     <img src="{{url_for('static', filename='img/paslon1.png')}}" alt=""><br>
-                    <a class="navbar-brand" href=""><button class="btn buttong btn-lg">Visi & Misi</button></a>
+                    <button class="btn buttong btn-lg mt-2 navbar-brand-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Visi & Misi</button>
                 </div>
                 <div class="col-lg-6 text-center mt-5">
                     <img src="{{url_for('static', filename='img/paslon2.png')}}" alt=""><br>
-                    <a class="navbar-brand" href=""><button class="btn buttong btn-lg">Visi & Misi</button></a>
+                    <button class="btn buttong btn-lg mt-2 navbar-brand-btn fs-3" data-bs-toggle="modal" data-bs-target="#exampleModal1">Visi & Misi</button>
                 </div>
                 <div class="d-flex justify-content-center text-center">
-                    <a class="navbar-brand" href=""><button class="btn buttong btn-lg">VOTE</button></a>
+                    <a class="navbar-brand" href="{{url_for('voting')}}"><button class="btn buttong btn-lg">VOTE</button></a>
                     
                 </div><br><br><br>
             </div>

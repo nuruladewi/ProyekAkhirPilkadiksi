@@ -17,13 +17,8 @@
           </div>
         </div>
         <div class="card-body">
-<<<<<<< HEAD
           <form action = " {{url_for('addakun')}} " method="post">
             <h6 class="heading-small text-muted mb-4">Masukkan Informasi Akun</h6>
-=======
-          <form action = " {{url_for('daftarakun')}} " method="post">
-            <h6 class="heading-small text-muted mb-4">Member information</h6>
->>>>>>> ad4571a1ccc03ad6ee659acf3e3fd1f94421c321
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
@@ -34,13 +29,8 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-<<<<<<< HEAD
                     <label class="form-control-label" for="input-nama">Nama</label>
                     <input type="text" id="input-nama" name="nama" class="form-control" placeholder="Nama">
-=======
-                    <label class="form-control-label" for="input-nama_anggota">Nama</label>
-                    <input type="text" id="input-nama" name="nama_anggota" class="form-control" placeholder="Nama">
->>>>>>> ad4571a1ccc03ad6ee659acf3e3fd1f94421c321
                   </div>
                 </div>
               </div>
@@ -54,17 +44,20 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-jurusan">Jurusan</label>
-                    <input type="text" id="input-jurusan" name="jurusan" class="form-control" placeholder="Jurusan">
+                    <select for="input-group-prepend" class="form-control" placeholder="jurusan" type="jurusan" name="jurusan" multiplex>jurusan
+                      <br>
+                      <option selected disabled> --Pilih Jurusan-- </option>
+                    {%for item in jurusan%}
+                      <option value="{{item[0]}}">{{item[0]}}</option>
+                    {%endfor%}
+                  </select>
                   </div>
                 </div>
-<<<<<<< HEAD
                 <div class="col-lg-12 d-flex justify-content-end pt-3">
-=======
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
->>>>>>> ad4571a1ccc03ad6ee659acf3e3fd1f94421c321
-                  <button type="submit" class="btn btn-neutral ms-2">Tambahkan</button>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-neutral ms-2">Tambahkan</button>
+                  </div>
                 </div>
-
               </div>
             </div>
           </form>

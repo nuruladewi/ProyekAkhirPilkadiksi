@@ -1,5 +1,4 @@
 #import library
-from ast import pattern
 from flask import Flask, render_template, request, redirect, url_for, flash, redirect, request, session, flash, jsonify
 from auth import login
 from flask_mysqldb import MySQL
@@ -38,12 +37,14 @@ def login():
                     notif = "Username Salah"
                     return render_template('/home/login.html', notif=notif)
                 elif data[2]==password:
-                    notif = "Halo " + nim
+                    notif = data[1]
                     return render_template('/home/lihatkandidatuser.html', notif=notif)
         else:
             return render_template('/home/login.html')
+        cnim=nim
+        return nim
 
-@application.route('/Login&admin/', methods=['GET', 'POST'])
+@application.route('/loginadmin/', methods=['GET', 'POST'])
 def loginadmin():
     if request.method == 'GET':
         return render_template('/home/loginadmin.html')
@@ -65,7 +66,7 @@ def loginadmin():
                     notif = "Halo " + username
                     return render_template('/home/index.html',notif=notif)
         else:
-            return render_template('/home/loginadmin.html') 
+            return render_template('/home/login.html') 
 @application.route('/register/')
 def register():
     return render_template('/home/register.html')
@@ -78,7 +79,11 @@ def logout():
     session.pop('logged_in', None)
     flash('Logout successful','success')
     return redirect(url_for('login'))
-
+@application.route('/logoutadmin/')
+def logoutadmin():
+    session.pop('logged_in', None)
+    flash('Logout successful','success')
+    return redirect(url_for('loginadmin'))
 
 # untuk Admin
 @application.route('/index/')
@@ -116,7 +121,17 @@ def daftarakun():
 @application.route('/addakun/', methods=['GET','POST'])
 def addakun():
     if request.method == 'GET':
-        return render_template('/home/addakun.html')
+        db = getMysqlConnection()
+        try:
+            sqlstr = "SELECT * from jurusan"
+            cur = db.cursor()
+            cur.execute(sqlstr)
+            output_json = cur.fetchall()
+        except Exception as e:
+            print("Error in SQL:\n", e)
+        finally:
+            db.close()
+        return render_template('/home/addakun.html', jurusan = output_json)
     elif request.method == 'POST':
         nim = request.form['nim']
         nama = request.form['nama']
@@ -200,7 +215,7 @@ def deleteakun(nim):
     db = getMysqlConnection()
     try:
         cur = db.cursor()
-        sqlstr = f"delete from mahasisw where nim={nim}"
+        sqlstr = f"delete from mahasiswa where nim={nim}"
         cur.execute(sqlstr)
         db.commit()
         cur.close()
@@ -225,40 +240,6 @@ def hasilvoting():
         db.close()
     return render_template('/home/hasilvoting.html', hasilvoting = output_json)
 
-@application.route('/addvoting/', methods=['GET','POST'])
-def addvoting():
-    db = getMysqlConnection()
-    if request.method == 'POST':
-        nim = request.form['nim']
-        pilihan = request.form['pilihan']
-        
-        try:
-            cur = db.cursor()
-            sukses = "data berhasil ditambah"
-            sqlstr = f"INSERT INTO `hasil_voting` (`nim`, `pilihan`) VALUES ("+nim+","+pilihan+");"
-            print(sqlstr)
-            cur.execute(sqlstr)
-            db.commit()
-            cur.close()
-            print('sukses')
-        except Exception as e:
-            print("Error in SQL :\n", e)
-        finally:
-            db.close()
-        return redirect(url_for('suksesvote'))
-    try:
-        cur = db.cursor()
-        sqlstr = f"select id_kandidat from kandidat"
-        cur.execute(sqlstr)
-        print('sukses')
-        output_json = cur.fetchall()
-        cur.close()
-    except Exception as e:
-        print("Error in SQL:\n", e)
-    finally:
-        db.close()
-        return render_template('/home/voting.html', datavoting = output_json)
-
 @application.route('/suksesvote/')
 def suksesvote():
     if request.method == 'GET':
@@ -276,14 +257,48 @@ def kandidat():
 def pilihkandidat():
     return render_template('/home/lihatkandidatuser.html')
 
-@application.route('/visimisi1/')
-def visimisi1():
-    return render_template('/home/visimisi1.html')
+@application.route('/voting/', methods=['GET','POST'])
+def voting():
 
-@application.route('/visimisi2/')
-def visimisi2():
-    return render_template('/home/visimisi2.html')
+    if request.method == 'GET':
+        db = getMysqlConnection()
+        try:
+            sqlstr = "SELECT * from kandidat"
+            cur = db.cursor()
+            cur.execute(sqlstr)
+            output_json = cur.fetchall()
+        except Exception as e:
+            print("Error in SQL:\n", e)
+        finally:
+            db.close()
+        return render_template('/home/voting.html', kandidat=output_json)
+    elif request.method == 'POST':
+        nim = request.form['nim']
+        pilihan = request.form['pilihan']
+        db = getMysqlConnection()
+        
+        try:
+            cur = db.cursor()
+            sukses = "data berhasil ditambah"
+            sqlstr = f"INSERT INTO `hasil_voting` (`nim`, `pilihan`) VALUES ("+nim+",'"+pilihan+"');"
+            print(sqlstr)
+            cur.execute(sqlstr)
+            db.commit()
+            cur.close()
+            print('sukses')
+            datavoting = cur.fetchall()
+            print(sukses)
+        except Exception as e:
+            print("Error in SQL :\n", e)
+        finally:
+            db.close()
+        return redirect(url_for('suksesvote'))
+    else:
+        return render_template('/home/voting.html', datavoting)
 
+@application.route('/addkandidat/')
+def addkandidat():
+    return render_template('/home/addkandidat.html')
 
 
 if __name__ == '__main__':

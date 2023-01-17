@@ -1,0 +1,54 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block content %}
+
+<!-- Page content -->
+<div class="container-fluid mt-4">
+  <div class="row">
+    <div class="col-xl-12 order-xl-1">
+      <div class="card">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Tambah Kandidat</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form action = " {{url_for('addkandidat')}} " method="post">
+            <h6 class="heading-small text-muted mb-4">Kandidat information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-id_kandidat">ID</label>
+                    <input type="text" id="input-id_kandidat" name="id_kandidat" class="form-control" placeholder="ID">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-nama_kandidat">Nama</label>
+                    <input type="text" id="input-nama_kandidat" name="nama_kandidat" class="form-control" placeholder="Nama">
+                  </div>
+                </div>
+              </div>
+                <div class="col-lg-12 d-flex justify-content-end pt-3">
+                  <button type="submit" class="btn btn-neutral ms-2">Tambahkan</button>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "includes/footer.html" %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
