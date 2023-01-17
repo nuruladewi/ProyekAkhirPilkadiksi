@@ -296,7 +296,9 @@ def voting():
     else:
         return render_template('/home/voting.html', datavoting)
 
-
+@application.route('/addkandidat/')
+def addkandidat():
+    return render_template('/home/addkandidat.html')
 
 
 if __name__ == '__main__':
