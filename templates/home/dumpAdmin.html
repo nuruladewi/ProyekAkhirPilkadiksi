@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>landing Login Admin</title>
+    </head>
+    <body onload="setInterval('display()',1000);">
+        
+        <a>{{notif}}</a>
+        <br>
+        <a>Input Kandidat</a>
+        {% for item in kandidat %}
+              <a>{{item[1]}}</a>
+        {%endfor%}
+
+        <form role="form" method=post>
+            <div class="form-group mb-3">
+              <div class="input-group input-group-merge input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                </div>
+                <input class="form-control" placeholder="waktu" type="text" name="waktu" required autofocus>
+              </div>
+            </div>
+            <div class="text-center">
+              <button id="submit" type="submit" class="btn btn-primary my-4">Log in</button>
+            </div>
+          </form>
+          <script>
+
+            var f=waktu;
+            var countdown = new Date(f).getTime();
+            var i = setInterval(function(){
+                var now = new Date().getTime();
+                var distance = countdown - now;
+        
+                var Hari = Math.floor(distance /(1000*60*60*24));
+                var Jam = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+                var Menit = Math.floor((distance%(1000*60*60))/(1000*60));
+                var Detik = Math.floor((distance%(1000*60))/1000);
+        
+                document.getElementById("Hari").innerHTML=Hari;
+                document.getElementById("Jam").innerHTML=Jam;
+                document.getElementById("Menit").innerHTML=Menit;
+                document.getElementById("Detik").innerHTML=Detik
+        
+                if(distance <= 0){
+                    clearInterval(i);
+                    document.getElementById("Hari").innerHTML="00";
+                    document.getElementById("Jam").innerHTML="00";
+                    document.getElementById("Menit").innerHTML="00";
+                    document.getElementById("Detik").innerHTML="00";
+                    document.getElementById("submit").style.display='none'
+                    const Teks = document.getElementById("Teks");
+                    Teks.innerHTML= "Waktu Habis";
+                    
+                }
+            },1000
+            );
+            function display(){
+                    var CTime=new Date();
+                    var Time= new Date(CTime.getTime());
+                    var sh=Time.getHours().toString();
+                    var sm=Time.getMinutes().toString();
+                    var ss=Time.getSeconds().toString();
+                document.getElementById("jam").innerHTML=(sh.length==1?"0"+sh:sh)+":"+(sm.length==1?"0"+sm:sm)+":"+(ss.length==1?"0"+ss:ss);
+                
+                document.getElementById("jaminput").value=(sh.length==1?"0"+sh:sh)+":"+(sm.length==1?"0"+sm:sm)+":"+(ss.length==1?"0"+ss:ss);
+            }
+                </script>
+    </body>
+</html>
