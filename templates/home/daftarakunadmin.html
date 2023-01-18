@@ -39,11 +39,8 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="sort" data-sort="nim">NIM Mahasiswa</th>
-                  <th scope="col" class="sort" data-sort="nama_mahasiswa">Nama Mahasiswa</th>
+                  <th scope="col" class="sort" data-sort="username">username admin</th>
                   <th scope="col" class="sort" data-sort="password">Password</th>
-                  <th scope="col" class="sort" data-sort="jurusan">Jurusan</th>
-                  <th scope="col" class="sort" data-sort="action">Aksi</th>
                 </tr>
               </thead>
               {%for item in dataakun %}
@@ -66,7 +63,7 @@
             <nav aria-label="...">
               <ul class="pagination justify-content-end mb-0">
                 <li class="page-item">
-                  <a href="{{url_for('addakun')}}">
+                  <a href="{{url_for('addakunadmin')}}">
                     <button type="button" class="btn btn-neutral btn-block">Tambah Data</button>
                   </a>
                 </li>
