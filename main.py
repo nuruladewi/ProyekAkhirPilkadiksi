@@ -61,10 +61,10 @@ def loginadmin():
             if data[1] == password: 
                 if data == None:
                     notif = "username Salah"
-                    return render_template('/home/loginadmin.html', notif=notif)
+                    return render_template('/home/loginadmin.html',notif=notif)
                 elif data[1]==password:
                     notif = "Halo " + username
-                    return render_template('/home/index.html',notif=notif)
+                    return render_template('/home/index.html', notif=notif)
         else:
             return render_template('/home/login.html') 
 @application.route('/register/')
@@ -111,27 +111,17 @@ def daftarakun():
         sqlstr = "SELECT * from mahasiswa"
         cur = db.cursor()
         cur.execute(sqlstr)
-        output_json = cur.fetchall()
+        dataakun = cur.fetchall()
     except Exception as e:
         print("Error in SQL:\n", e)
     finally:
         db.close()
-    return render_template('/home/daftarakun.html', dataakun = output_json)
+    return render_template('/home/daftarakun.html', dataakun = dataakun)
 
 @application.route('/addakun/', methods=['GET','POST'])
 def addakun():
     if request.method == 'GET':
-        db = getMysqlConnection()
-        try:
-            sqlstr = "SELECT * from jurusan"
-            cur = db.cursor()
-            cur.execute(sqlstr)
-            output_json = cur.fetchall()
-        except Exception as e:
-            print("Error in SQL:\n", e)
-        finally:
-            db.close()
-        return render_template('/home/addakun.html', jurusan = output_json)
+        return render_template('/home/addakun.html')
     elif request.method == 'POST':
         nim = request.form['nim']
         nama = request.form['nama']
@@ -173,49 +163,38 @@ def editakun(nim):
         db.close()
     return render_template('/home/editedakun.html', datamahasiswa = output_json)
 
-@application.route('/editedakun/<int:nim>/')
+@application.route('/editedakun/<int:nim>/', methods=['GET','POST'])
 def editedakun(nim):
     db = getMysqlConnection()
-    nama = request.form['nama']
-    password = request.form['password']
-    jurusan = request.form['jurusan']
-        
-    try:
-        sqlstr = f"SELECT * from mahasiswa where nim={nim}"
-        cur = db.cursor()
-        cur.execute(sqlstr)
-        old_data = cur.fetchone()
-        cur.close()
-    except Exception as e:
-        print("Error in SQL:\n", e)
+    cur = db.cursor()
+    readData = "SELECT * FROM mahasiswa WHERE nim='"+str(nim)+"'"
+    cur.execute(readData)
+    data = cur.fetchone()
 
-    if len(nama) == 0:
-        nama = old_data[0][1]
-    if len(password) == 0:
-        password = old_data[0][2]
-    if len(jurusan) == 0:
-        jurusan = old_data[0][3]
-        
-    try:
-        cur = db.cursor()
-        sqlstr = f"update mahasiswa set nama = '{nama}', password = '{password}', jurusan = {jurusan}"             
+    if request.method == 'POST':
+        nama = request.form['nama']
+        password = request.form['password']
+        jurusan = request.form['jurusan']
+        sqlstr = "UPDATE `mahasiswa` SET `nama`='"+nama+"', `password`='"+password+"' , `jurusan`='"+jurusan+"' WHERE `nim`='"+str(data[0])+"'"
         cur.execute(sqlstr)
         db.commit()
+        cur.execute(readData)
+        data = cur.fetchone()
         cur.close()
         db.close()
-        print('sukses')
-    except Exception as e:
-        print("Error in SQL:\n", e)
-    finally:
+        editedakun.html
+        return render_template('/home/editedakun.html',data=data)
+    else:
+        cur.close()
         db.close()
-    return redirect(url_for('daftarakun'))
+        return render_template('/home/editedakun.html',data=data)
 
 @application.route('/deleteakun/<int:nim>', methods=['GET', 'POST'])
 def deleteakun(nim):
     db = getMysqlConnection()
     try:
         cur = db.cursor()
-        sqlstr = f"delete from mahasiswa where nim={nim}"
+        sqlstr = f"delete from mahasisw where nim={nim}"
         cur.execute(sqlstr)
         db.commit()
         cur.close()
@@ -256,6 +235,7 @@ def kandidat():
 @application.route('/pilihkandidat/')
 def pilihkandidat():
     return render_template('/home/lihatkandidatuser.html')
+
 
 @application.route('/daftarkandidat/')
 def daftarkandidat():
@@ -399,6 +379,7 @@ def voting():
         return redirect(url_for('suksesvote'))
     else:
         return render_template('/home/voting.html', datavoting)
+
 
 
 
