@@ -61,7 +61,7 @@ def loginadmin():
             if data[1] == password: 
                 if data == None:
                     notif = "username Salah"
-                    return render_template('/home/loginadmin.html', notif=notif)
+                    return render_template('/home/loginadmin.html',notif=notif)
                 elif data[1]==password:
                     notif = "Halo " + username
                     return render_template('/home/index.html', notif=notif)
