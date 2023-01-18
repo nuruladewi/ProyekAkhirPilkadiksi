@@ -64,6 +64,7 @@ def loginadmin():
                     return render_template('/home/loginadmin.html',notif=notif)
                 elif data[1]==password:
                     notif = "Halo " + username
+                    session['logged_in'] = True
                     return render_template('/home/index.html', notif=notif)
         else:
             return render_template('/home/login.html') 
