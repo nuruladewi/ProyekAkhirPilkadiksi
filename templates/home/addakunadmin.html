@@ -1,9 +1,9 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %} Kandidat {% endblock title %}
+{% block title %} Akun Mahasiswa {% endblock title %}
 
 {% block content %}
-{% if session.logged_in %}
+
 <!-- Page content -->
 <div class="container-fluid mt-4">
   <div class="row">
@@ -12,31 +12,34 @@
         <div class="card-header">
           <div class="row align-items-center">
             <div class="col-8">
-              <h3 class="mb-0">Tambah Kandidat</h3>
+              <h3 class="mb-0">Tambah Akun</h3>
             </div>
           </div>
         </div>
         <div class="card-body">
-          <form action = "{{url_for('addkandidat')}}" method="post">
-            <h6 class="heading-small text-muted mb-4">Kandidat information</h6>
+          <form action = " {{url_for('addakunadmin')}} " method="post">
+            <h6 class="heading-small text-muted mb-4">Masukkan Informasi Akun</h6>
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-id_kandidat">ID</label>
-                    <input type="text" id="input-id_kandidat" name="id_kandidat" class="form-control" placeholder="ID">
+                    <label class="form-control-label" for="input-nim">username</label>
+                    <input type="text" id="input-nim" name="username" class="form-control" placeholder="NIM">
                   </div>
                 </div>
+              <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-nama_kandidat">Nama</label>
-                    <input type="text" id="input-nama_kandidat" name="nama_kandidat" class="form-control" placeholder="Nama">
+                    <label class="form-control-label" for="input-password">Password</label>
+                    <input type="text" id="input-password" name="password" class="form-control" placeholder="Password">
+                  </div>
+                </div>
+                <div class="col-lg-12 d-flex justify-content-end pt-3">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-neutral ms-2">Tambahkan</button>
                   </div>
                 </div>
               </div>
-                <div class="col-lg-12 d-flex justify-content-end pt-3">
-                  <button type="submit" class="btn btn-neutral ms-2">Tambahkan</button>
-                </div>
             </div>
           </form>
         </div>
@@ -47,7 +50,7 @@
   {% include "includes/footer.html" %}
 
 </div>
-{% endif %}
+
 {% endblock content %}
 
 <!-- Specific JS goes HERE --> 

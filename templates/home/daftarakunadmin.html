@@ -3,19 +3,17 @@
 {% block title %} Tables {% endblock title %}
 
 {% block content %}
-{% if session.logged_in %}
-
 
   <div class="header bg-primary pb-6">
     <div class="container-fluid">
       <div class="header-body">
         <div class="row align-items-center py-4">
           <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">Kandidat</h6>
+            <h6 class="h2 text-white d-inline-block mb-0">Daftar Anggota</h6>
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
               <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item"><a href=" {{url_for('index')}} "><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item active" aria-current="page">Kandidat</li>
+                <li class="breadcrumb-item active" aria-current="page">Anggota</li>
               </ol>
             </nav>
           </div>
@@ -34,34 +32,29 @@
         <div class="card">
           <!-- Card header -->
           <div class="card-header border-0">
-            <h3 class="mb-0">Daftar Kandidat</h3>
+            <h3 class="mb-0">Daftar Akun Anggota</h3>
           </div>
           <!-- Light table -->
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="sort text-center" data-sort="id_kandidat">ID Kandidat</th>
-                  <th scope="col" class="sort text-center" data-sort="nama_kandidat">Nama Kandidat</th>
+                  <th scope="col" class="sort" data-sort="nim">NIM Mahasiswa</th>
+                  <th scope="col" class="sort" data-sort="nama_mahasiswa">Nama Mahasiswa</th>
+                  <th scope="col" class="sort" data-sort="password">Password</th>
+                  <th scope="col" class="sort" data-sort="jurusan">Jurusan</th>
                   <th scope="col" class="sort" data-sort="action">Aksi</th>
                 </tr>
               </thead>
-              {%for item in datakandidat%}
+              {%for item in dataakun %}
               <tbody class="list">
                 <tr>
                     <th scope="row">
-                      <a href = " {{item}} "> {{ item[0] }} </a>
+                      <a href = " {{item}} "> {{ item [0] }} </a>
                     </th>
                     <td>
-                      <a href = " {{item}} "> {{ item[1] }} </a>
+                      <a href = " {{item}} "> {{ item [1] }} </a>
                     </td>
-                    <td>
-                      <a href="{{url_for('editkandidat', id_kandidat=item[0])}}"> 
-                        <button class="btn btn-neutral"> Update </button>
-                      </a>
-                      <a href="{{url_for('deletekandidat', id_kandidat=item[0])}} ">
-                        <button class="btn btn-danger"> Delete </button>
-                      </a>
                     </td>
                   </tr>
                 </tbody>
@@ -73,7 +66,7 @@
             <nav aria-label="...">
               <ul class="pagination justify-content-end mb-0">
                 <li class="page-item">
-                  <a href="{{url_for('addkandidat')}}">
+                  <a href="{{url_for('addakun')}}">
                     <button type="button" class="btn btn-neutral btn-block">Tambah Data</button>
                   </a>
                 </li>
@@ -104,7 +97,7 @@
     </div>
     {% include "includes/footer.html" %}
 </div>
-{% endif %}
+
 {% endblock content %}
 
 <!-- Specific JS goes HERE --> 
