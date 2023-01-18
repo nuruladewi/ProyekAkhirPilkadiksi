@@ -5,11 +5,14 @@ from flask_mysqldb import MySQL
 import mysql.connector
 import urllib.request
 import json
-
+from flask_session import Session
 
 #inisiasi object flask
 application = Flask(__name__)
 application.secret_key = "wiro212sableng"
+application.config["SESSION_PERMANENT"] = False
+application.config["SESSION_TYPE"] = "filesystem"
+Session(application)
 
 def getMysqlConnection():
     return mysql.connector.connect(user='root', host='localhost', port='3306', password='', database='pilkadiksi')
@@ -117,6 +120,19 @@ def daftarakun():
     finally:
         db.close()
     return render_template('/home/daftarakun.html', dataakun = dataakun)
+@application.route('/daftarakunadmin/')
+def daftarakunadmin():
+    db = getMysqlConnection()
+    try:
+        sqlstr = "SELECT * from admin"
+        cur = db.cursor()
+        cur.execute(sqlstr)
+        dataakun = cur.fetchall()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return render_template('/home/daftarakun.html', dataakun = dataakun)
 
 @application.route('/addakun/', methods=['GET','POST'])
 def addakun():
@@ -148,6 +164,34 @@ def addakun():
     else:
         return render_template('/home/addakun.html', datamahasiswa)
 
+@application.route('/addakunadmin/', methods=['GET','POST'])
+def addakunadmin():
+    if request.method == 'GET':
+        return render_template('/home/addakunadmin.html')
+    elif request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        db = getMysqlConnection()
+        
+        try:
+            cur = db.cursor()
+            sukses = "data berhasil ditambah"
+            sqlstr = f"INSERT INTO `admin` (`username`, `password``) VALUES ("+username+", '"+password+"');"
+            print(sqlstr)
+            cur.execute(sqlstr)
+            db.commit()
+            cur.close()
+            print('sukses')
+            datamahasiswa = cur.fetchall()
+            print(sukses)
+        except Exception as e:
+            print("Error in SQL :\n", e)
+        finally:
+            db.close()
+        return redirect(url_for('daftarakunadmin'))
+    else:
+        return render_template('/home/addakunadmin.html', datamahasiswa)
+
 @application.route('/editakun/<int:nim>/')
 def editakun(nim):
     db = getMysqlConnection()
@@ -161,7 +205,7 @@ def editakun(nim):
         print("Error in SQL:\n", e)
     finally:
         db.close()
-    return render_template('/home/editakun.html', datamahasiswa = output_json)
+    return render_template('/home/editedakun.html', datamahasiswa = output_json)
 
 @application.route('/editedakun/<int:nim>/', methods=['GET','POST'])
 def editedakun(nim):
@@ -182,7 +226,6 @@ def editedakun(nim):
         data = cur.fetchone()
         cur.close()
         db.close()
-        editedakun.html
         return render_template('/home/editedakun.html',data=data)
     else:
         cur.close()
