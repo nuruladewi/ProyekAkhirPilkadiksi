@@ -161,7 +161,7 @@ def editakun(nim):
         print("Error in SQL:\n", e)
     finally:
         db.close()
-    return render_template('/home/editakun.html', datamahasiswa = output_json)
+    return render_template('/home/editedakun.html', datamahasiswa = output_json)
 
 @application.route('/editedakun/<int:nim>/', methods=['GET','POST'])
 def editedakun(nim):
@@ -235,9 +235,115 @@ def kandidat():
 @application.route('/pilihkandidat/')
 def pilihkandidat():
     return render_template('/home/lihatkandidatuser.html')
+
+
+@application.route('/daftarkandidat/')
+def daftarkandidat():
+    db = getMysqlConnection()
+    try:
+        sqlstr = "SELECT * from kandidat"
+        cur = db.cursor()
+        cur.execute(sqlstr)
+        output_json = cur.fetchall()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return render_template('/home/daftarkandidat.html', datakandidat = output_json)
+
+@application.route('/addkandidat/', methods=['GET','POST'])
+def addkandidat():
+    if request.method == 'GET':
+        return render_template('/home/addkandidat.html')
+    elif request.method == 'POST':
+        id_kandidat = request.form['id_kandidat']
+        nama_kandidat = request.form['nama_kandidat']
+        db = getMysqlConnection()
+        
+        try:
+            cur = db.cursor()
+            sukses = "data berhasil ditambah"
+            sqlstr = f"INSERT INTO `kandidat` (`id_kandidat`, `nama_kandidat`) VALUES ("+id_kandidat+",'"+nama_kandidat+"');"
+            print(sqlstr)
+            cur.execute(sqlstr)
+            db.commit()
+            cur.close()
+            print('sukses')
+            output_json = cur.fetchall()
+            print(sukses)
+        except Exception as e:
+            print("Error in SQL :\n", e)
+        finally:
+            db.close()
+        return redirect(url_for('daftarkandidat'))
+    else:
+        return render_template('/home/addkandidat.html', datakandidat = output_json)
+
+@application.route('/editkandidat/<int:id_kandidat>/')
+def editkandidat(id_kandidat):
+    db = getMysqlConnection()
+    try:
+        sqlstr = f"SELECT * from kandidat where id_kandidat={id_kandidat}"
+        cur = db.cursor()
+        cur.execute(sqlstr)
+        output_json = cur.fetchone()
+        cur.close()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return render_template('/home/editedkandidat.html', datakandidat = output_json)
+
+@application.route('/editedkandidat/<int:id_kandidat>/', methods=['GET','POST'])
+def editedkandidat(id_kandidat):
+    db = getMysqlConnection()
+    nama_kandidat = request.form['nama_kandidat']
+        
+    try:
+        sqlstr = f"SELECT * from mahasiswa where id_kandidat={id_kandidat}"
+        cur = db.cursor()
+        cur.execute(sqlstr)
+        old_data = cur.fetchone()
+        cur.close()
+    except Exception as e:
+        print("Error in SQL:\n", e)
+
+    if len(nama_kandidat) == 0:
+        nama_kandidat = old_data[0][1]
+        
+    try:
+        cur = db.cursor()
+        sqlstr = f"update kandidat set nama_kandidat = '{nama_kandidat}' where id_kandidat={id_kandidat}"             
+        cur.execute(sqlstr)
+        db.commit()
+        cur.close()
+        db.close()
+        print('sukses')
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return redirect(url_for('daftarkandidat'))
+
+@application.route('/deletekandidat/<int:id_kandidat>', methods=['GET', 'POST'])
+def deletekandidat(id_kandidat):
+    db = getMysqlConnection()
+    try:
+        cur = db.cursor()
+        sqlstr = f"delete from kandidat where id_kandidat={id_kandidat}"
+        cur.execute(sqlstr)
+        db.commit()
+        cur.close()
+        print('deleted sukses')
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return redirect(url_for('daftarkandidat'))
+
+
 @application.route('/voting/', methods=['GET','POST'])
 def voting():
-
     if request.method == 'GET':
         db = getMysqlConnection()
         try:
@@ -273,9 +379,7 @@ def voting():
         return redirect(url_for('suksesvote'))
     else:
         return render_template('/home/voting.html', datavoting)
-@application.route('/addkandidat/')
-def addkandidat():
-    return render_template('/home/addkandidat.html')
+
 
 
 
