@@ -132,7 +132,7 @@ def daftarakunadmin():
         print("Error in SQL:\n", e)
     finally:
         db.close()
-    return render_template('/home/daftarakun.html', dataakun = dataakun)
+    return render_template('/home/daftarakunadmin.html', dataakun = dataakun)
 
 @application.route('/addakun/', methods=['GET','POST'])
 def addakun():
