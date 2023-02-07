@@ -32,28 +32,28 @@
         <div class="card">
           <!-- Card header -->
           <div class="card-header border-0">
-            <h3 class="mb-0">Hasil Voting</h3>
+            <h3 class="mb-0">Daftar Hasil Voting</h3>
           </div>
           <!-- Light table -->
           <div class="table-responsive">
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="sort" data-sort="nim">NIM Mahasiswa</th>
-                  <th scope="col" class="sort" data-sort="pilihan">Pilihan</th>
+                  <th scope="col" class="sort text-center" data-sort="nim">NIM Mahasiswa</th>
+                  <th scope="col" class="sort text-center" data-sort="pilihan">Pilihan</th>
                 </tr>
               </thead>
-              {%for item in hasilvoting %}
+              {%for item in hasilvoting%}
               <tbody class="list">
                 <tr>
                     <th scope="row">
-                      <a href = " {{item}} "> {{ item [0] }} </a>
+                      <a href = " {{item}} "> {{ item[0] }} </a>
                     </th>
                     <td>
-                      <a href = " {{item}} "> {{ item [1] }} </a>
+                      <a href = " {{item}} "> {{ item[1] }} </a>
                     </td>
-                </tr>
-               </tbody>
+                  </tr>
+                </tbody>
                 {%endfor%}
             </table>
           </div>
